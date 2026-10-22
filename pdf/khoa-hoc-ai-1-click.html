@@ -1,0 +1,663 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>AI 1 Click – Giáo trình 24 bài học</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 14mm 13mm 16mm 13mm; }
+  :root {
+    --ink: #1d2433; --muted: #5b6475; --line: #e3e6ec;
+    --c1: #0f4c5c; --c1l: #e6f0f2; --c2: #e36414; --c2l: #fdeee4;
+    --c3: #f2a541; --c4: #5f0f40; --bg: #f7f5f0;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { margin: 0; font-family: "Be Vietnam Pro", "Liberation Sans", "DejaVu Sans", sans-serif; color: var(--ink); font-size: 10pt; line-height: 1.45; background: #fff; }
+  h1, h2, h3, h4 { margin: 0; line-height: 1.2; }
+  p { margin: 0 0 6px; }
+  ul, ol { margin: 4px 0 6px; padding-left: 18px; }
+  li { margin-bottom: 2px; }
+  .page { page-break-after: always; break-after: page; }
+  .page:last-child { page-break-after: auto; break-after: auto; }
+
+  /* ---------- Cover ---------- */
+  .cover { height: 267mm; display: flex; flex-direction: column; justify-content: space-between; background: var(--c1); color: #fff; border-radius: 10px; padding: 22mm 16mm 16mm; position: relative; overflow: hidden; }
+  .cover .kicker { font-weight: 600; letter-spacing: .12em; text-transform: uppercase; font-size: 10pt; color: var(--c3); }
+  .cover h1 { font-size: 44pt; font-weight: 800; margin: 8px 0 10px; }
+  .cover h1 span { color: var(--c3); }
+  .cover .sub { font-size: 15pt; font-weight: 500; max-width: 140mm; opacity: .95; }
+  .cover .promise { background: rgba(255,255,255,.1); border-left: 4px solid var(--c3); padding: 10px 14px; border-radius: 6px; font-size: 11pt; max-width: 150mm; }
+  .cover .who { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 10px; }
+  .cover .who div { background: rgba(255,255,255,.12); border-radius: 8px; padding: 10px; text-align: center; font-size: 9.5pt; font-weight: 600; }
+  .cover .who .ic { font-size: 22pt; display: block; margin-bottom: 4px; }
+  .cover .foot { display: flex; justify-content: space-between; font-size: 10pt; opacity: .9; }
+  .cover svg.deco { position: absolute; right: -30mm; top: -20mm; opacity: .18; }
+
+  /* ---------- Section headers ---------- */
+  .sec { break-after: avoid; display: flex; align-items: center; gap: 12px; background: var(--c1); color: #fff; border-radius: 10px; padding: 12px 16px; margin-bottom: 10px; }
+  .sec .num { background: var(--c3); color: var(--c1); font-weight: 800; font-size: 20pt; width: 46px; height: 46px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex: none; }
+  .sec h2 { font-size: 17pt; font-weight: 800; }
+  .sec .meta { font-size: 9.5pt; opacity: .9; margin-top: 2px; }
+  h2.plain { font-size: 16pt; color: var(--c1); margin-bottom: 8px; font-weight: 800; }
+  h3.sub { font-size: 11.5pt; color: var(--c1); margin: 10px 0 6px; font-weight: 700; }
+
+  /* ---------- Generic ---------- */
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .card { border: 1px solid var(--line); border-radius: 8px; padding: 9px 11px; background: #fff; break-inside: avoid; }
+  .card h4 { font-size: 10.5pt; color: var(--c1); margin-bottom: 4px; }
+  .card .ic { font-size: 16pt; float: right; }
+  .muted { color: var(--muted); }
+  .quote { color: var(--c2); font-weight: 600; font-style: italic; }
+  table { width: 100%; border-collapse: collapse; font-size: 9pt; break-inside: avoid; }
+  th { background: var(--c1l); color: var(--c1); text-align: left; padding: 5px 7px; font-weight: 700; }
+  td { border-bottom: 1px solid var(--line); padding: 5px 7px; vertical-align: top; }
+  .illus { background: var(--bg); border-radius: 10px; padding: 10px 12px; margin: 6px 0 10px; break-inside: avoid; }
+  .illus .cap { font-size: 8.5pt; color: var(--muted); text-align: center; margin-top: 4px; }
+
+  /* ---------- Lesson card ---------- */
+  .lesson { border: 1px solid var(--line); border-radius: 10px; margin-bottom: 9px; break-inside: avoid; overflow: hidden; }
+  .lh { display: flex; align-items: center; gap: 9px; background: var(--c1l); padding: 7px 11px; }
+  .lh .no { background: var(--c2); color: #fff; font-weight: 800; border-radius: 6px; padding: 2px 8px; font-size: 10pt; }
+  .lh h3 { font-size: 11.5pt; color: var(--c1); font-weight: 700; flex: 1; }
+  .lh .t { font-size: 8.5pt; color: var(--muted); white-space: nowrap; }
+  .lb { padding: 8px 11px 9px; }
+  .pain { background: var(--c2l); border-radius: 6px; padding: 5px 9px; font-size: 9.3pt; margin-bottom: 6px; }
+  .pain b { color: var(--c2); }
+  .cols { display: grid; grid-template-columns: 1fr 1.05fr; gap: 10px; }
+  .lb .lbl { font-weight: 700; font-size: 9pt; color: var(--c1); text-transform: uppercase; letter-spacing: .04em; }
+  .lb ol { font-size: 9.3pt; }
+  pre { margin: 3px 0 0; white-space: pre-wrap; font-family: "Be Vietnam Pro", "Liberation Sans", sans-serif; font-size: 8.4pt; line-height: 1.4; background: #1d2433; color: #f3f1ea; border-radius: 6px; padding: 7px 9px; }
+  pre .v { color: var(--c3); font-weight: 700; }
+  .out { margin-top: 6px; font-size: 9.3pt; border-top: 1px dashed var(--line); padding-top: 5px; }
+  .out b { color: var(--c1); }
+  .tip { font-size: 8.8pt; color: var(--muted); margin-top: 3px; }
+
+  /* ---------- Formula blocks ---------- */
+  .formula { display: flex; gap: 6px; }
+  .formula div { flex: 1; border-radius: 8px; padding: 7px 6px; text-align: center; color: #fff; font-size: 8.6pt; line-height: 1.3; }
+  .formula b { display: block; font-size: 18pt; font-weight: 800; }
+  .f1 { background: #0f4c5c; } .f2 { background: #2c7a7b; } .f3 { background: #e36414; } .f4 { background: #f2a541; color: #1d2433 !important; } .f5 { background: #5f0f40; }
+
+  /* ---------- Roadmap ---------- */
+  .road { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; position: relative; }
+  .road .st { background: #fff; border: 2px solid var(--c1); border-radius: 10px; padding: 8px 6px; text-align: center; font-size: 8.5pt; }
+  .road .st .n { display: inline-flex; width: 26px; height: 26px; border-radius: 50%; background: var(--c2); color: #fff; font-weight: 800; align-items: center; justify-content: center; margin-bottom: 4px; }
+  .road .st b { display: block; color: var(--c1); font-size: 9pt; margin-bottom: 3px; }
+  .road .st .p { color: var(--c2); font-weight: 600; margin-top: 3px; }
+  .footer-note { font-size: 8.5pt; color: var(--muted); margin-top: 8px; }
+</style>
+</head>
+<body>
+
+<!-- ================= COVER ================= -->
+<section class="page">
+  <div class="cover">
+    <svg class="deco" width="420" height="420" viewBox="0 0 200 200"><circle cx="100" cy="100" r="95" fill="none" stroke="#fff" stroke-width="6"/><circle cx="100" cy="100" r="62" fill="none" stroke="#fff" stroke-width="6"/><circle cx="100" cy="100" r="28" fill="#fff"/></svg>
+    <div>
+      <div class="kicker">Giáo trình khóa học thực chiến · Non-code</div>
+      <h1>AI <span>1 Click</span></h1>
+      <div class="sub">Làm marketing nhanh gấp 10 lần, không cần biết code.<br>24 bài học · 6 buổi · Thử thách 21 ngày</div>
+    </div>
+    <div>
+      <div class="promise">Sau 6 buổi, bạn có <b>trợ lý AI của riêng mình</b>, <b>lịch nội dung 30 ngày</b> và <b>bộ chữ – ảnh – video đầu tiên</b>, làm bằng chính sản phẩm và thương hiệu của bạn.</div>
+      <div class="who">
+        <div><span class="ic">📈</span>Người làm marketing</div>
+        <div><span class="ic">🏪</span>Chủ doanh nghiệp / shop</div>
+        <div><span class="ic">🎬</span>Người làm hình ảnh, video</div>
+        <div><span class="ic">🌟</span>Thương hiệu cá nhân</div>
+      </div>
+    </div>
+    <div class="foot"><span>Giảng viên: [Tên bạn]</span><span>Phiên bản 10/2026</span></div>
+  </div>
+</section>
+
+<!-- ================= OVERVIEW ================= -->
+<section class="page">
+  <h2 class="plain">Học viên của bạn đang "đau" ở đâu?</h2>
+  <div class="grid2">
+    <div class="card"><span class="ic">📈</span><h4>Người làm marketing</h4><p>Deadline dồn, cạn ý tưởng, KPI tăng mà người không tăng. Dùng ChatGPT nhưng bài viết ra "nhạt".</p><p class="quote">"Người biết dùng AI mới thay thế bạn."</p></div>
+    <div class="card"><span class="ic">🏪</span><h4>Chủ doanh nghiệp / shop</h4><p>Thiếu người, tốn tiền quảng cáo, việc gì cũng tự làm, không rành công nghệ.</p><p class="quote">"Một mình bạn + AI = một phòng marketing."</p></div>
+    <div class="card"><span class="ic">🎬</span><h4>Người làm hình ảnh / video</h4><p>Công cụ mới ra liên tục, khách đòi nhanh – rẻ – đẹp, 1 sản phẩm mất cả ngày.</p><p class="quote">"Việc mất 1 ngày, giờ làm trong 30 phút."</p></div>
+    <div class="card"><span class="ic">🌟</span><h4>Thương hiệu cá nhân</h4><p>Ngại lên hình, không biết đăng gì, đăng mãi không ai xem.</p><p class="quote">"Video mỗi ngày mà không cần lên hình."</p></div>
+  </div>
+
+  <h3 class="sub">5 nỗi sợ được gỡ ngay buổi đầu</h3>
+  <table>
+    <tr><th style="width:28%">Nỗi sợ</th><th>Cách khóa học giải quyết</th></tr>
+    <tr><td>😰 Sợ khó</td><td>Không có một dòng code nào. Chỉ cần biết gõ chữ và copy – paste.</td></tr>
+    <tr><td>🤯 Sợ ngợp công cụ</td><td>Chỉ học 6 công cụ cốt lõi, mỗi công cụ giải đúng 1 việc.</td></tr>
+    <tr><td>💸 Sợ tốn tiền</td><td>Mọi bài tập làm được bằng bản miễn phí.</td></tr>
+    <tr><td>🤖 Sợ content máy móc</td><td>Dạy AI giọng của chính bạn ngay từ buổi 1.</td></tr>
+    <tr><td>😮‍💨 Sợ học xong bỏ dở</td><td>Mỗi buổi ra 1 sản phẩm dùng ngay, sau khóa có Thử thách 21 ngày.</td></tr>
+  </table>
+
+  <h3 class="sub">Bộ 6 công cụ cốt lõi</h3>
+  <div class="grid3">
+    <div class="card"><h4>✍️ ChatGPT</h4><span class="muted">Suy nghĩ, viết, lên kế hoạch · thay thế: Gemini, Claude</span></div>
+    <div class="card"><h4>🔎 Perplexity</h4><span class="muted">Nghiên cứu có dẫn nguồn</span></div>
+    <div class="card"><h4>📚 NotebookLM</h4><span class="muted">Đọc & tóm tắt tài liệu</span></div>
+    <div class="card"><h4>🎨 Canva</h4><span class="muted">Thiết kế hình ảnh, bộ nhận diện</span></div>
+    <div class="card"><h4>🎞️ CapCut</h4><span class="muted">Dựng video ngắn, phụ đề, giọng đọc</span></div>
+    <div class="card"><h4>🧑‍💼 HeyGen</h4><span class="muted">Video người dẫn ảo</span></div>
+  </div>
+</section>
+
+<!-- ================= ROADMAP ================= -->
+<section class="page">
+  <h2 class="plain">Lộ trình 6 buổi – mỗi buổi chữa 1 nỗi đau</h2>
+  <div class="illus">
+    <div class="road">
+      <div class="st"><span class="n">1</span><b>Từ sợ AI đến sai khiến AI</b>Bài #1 #2 #8<div class="p">10 prompt + Brand Voice</div></div>
+      <div class="st"><span class="n">2</span><b>Không bao giờ hết ý tưởng</b>Bài #4 #5 #6 #10<div class="p">Persona + lịch 30 ngày</div></div>
+      <div class="st"><span class="n">3</span><b>Viết bài ra đơn trong 10 phút</b>Bài #7 #9 #21 #20<div class="p">10 bài + kịch bản chốt sale</div></div>
+      <div class="st"><span class="n">4</span><b>Ảnh đẹp như studio</b>Bài #11 #12 #13 #14<div class="p">10 ảnh + Brand Kit</div></div>
+      <div class="st"><span class="n">5</span><b>Video không cần lên hình</b>Bài #15 – #19<div class="p">3 video ngắn</div></div>
+      <div class="st"><span class="n">6</span><b>Một mình bằng cả team</b>Bài #3 #22 #23 #24<div class="p">Trợ lý AI + kế hoạch 90 ngày</div></div>
+    </div>
+    <div class="cap">Mỗi buổi 2,5 giờ · Sau khóa: Thử thách 21 ngày, mỗi ngày 15 phút</div>
+  </div>
+
+  <h3 class="sub">Cấu trúc một buổi học (150 phút)</h3>
+  <div class="illus">
+    <svg width="100%" viewBox="0 0 600 70">
+      <rect x="0" y="10" width="40" height="34" rx="5" fill="#f2a541"/><text x="20" y="32" font-size="11" text-anchor="middle" fill="#1d2433" font-weight="700">10'</text>
+      <rect x="42" y="10" width="80" height="34" rx="5" fill="#2c7a7b"/><text x="82" y="32" font-size="11" text-anchor="middle" fill="#fff" font-weight="700">20'</text>
+      <rect x="124" y="10" width="360" height="34" rx="5" fill="#0f4c5c"/><text x="304" y="32" font-size="11" text-anchor="middle" fill="#fff" font-weight="700">90' THỰC HÀNH trên dự án của chính học viên</text>
+      <rect x="486" y="10" width="80" height="34" rx="5" fill="#e36414"/><text x="526" y="32" font-size="11" text-anchor="middle" fill="#fff" font-weight="700">20'</text>
+      <rect x="568" y="10" width="32" height="34" rx="5" fill="#5f0f40"/><text x="584" y="32" font-size="11" text-anchor="middle" fill="#fff" font-weight="700">10'</text>
+      <text x="20" y="62" font-size="9" text-anchor="middle" fill="#5b6475">Phép màu</text>
+      <text x="82" y="62" font-size="9" text-anchor="middle" fill="#5b6475">Làm mẫu</text>
+      <text x="304" y="62" font-size="9" text-anchor="middle" fill="#5b6475">Làm theo – làm cùng – tự làm</text>
+      <text x="526" y="62" font-size="9" text-anchor="middle" fill="#5b6475">Chữa bài trực tiếp</text>
+      <text x="584" y="62" font-size="9" text-anchor="middle" fill="#5b6475">Giao bài</text>
+    </svg>
+  </div>
+
+  <h3 class="sub">Dự án mẫu dùng để demo xuyên suốt</h3>
+  <div class="card" style="background:var(--bg)"><b>🧴 "Mộc Serum"</b>: shop online bán serum vitamin C thuần chay, 350.000đ/chai. Khách: nữ văn phòng 24–35 tuổi, da dầu mụn. Kênh: Facebook, TikTok, Shopee. Chủ shop tự làm marketing một mình.</div>
+
+  <h3 class="sub">Quy tắc an toàn – nhắc ở mọi buổi</h3>
+  <div class="grid2">
+    <div class="card">🔒 Không đưa tên, số điện thoại, địa chỉ, thông tin thanh toán của khách lên AI.</div>
+    <div class="card">✅ Kiểm chứng số liệu, tên thương hiệu, trích dẫn AI đưa ra.</div>
+    <div class="card">©️ Không giả mạo người thật, giọng nói, logo có bản quyền.</div>
+    <div class="card">🏷️ Gắn nhãn nội dung AI khi nền tảng yêu cầu.</div>
+  </div>
+</section>
+
+<!-- ================= BUỔI 1 ================= -->
+<section>
+  <div class="sec" style="margin-top:6px"><div class="num">1</div><div><h2>Từ sợ AI đến sai khiến AI</h2><div class="meta">Bài #1 · #2 · #8 — Sản phẩm buổi: 10 prompt cá nhân + Brand Voice</div></div></div>
+
+  <div class="illus">
+    <div class="formula">
+      <div class="f1"><b>V</b>Vai trò<br>AI đóng vai ai?</div>
+      <div class="f2"><b>B</b>Bối cảnh<br>Sản phẩm, khách, mục tiêu</div>
+      <div class="f3"><b>N</b>Nhiệm vụ<br>Làm gì, bao nhiêu?</div>
+      <div class="f4"><b>Đ</b>Định dạng<br>Độ dài, bố cục</div>
+      <div class="f5"><b>M</b>Mẫu / Mức chuẩn<br>Giọng văn, điều cấm</div>
+    </div>
+    <div class="cap">Công thức prompt V.B.N.Đ.M – giao việc cho AI như giao cho một nhân viên mới rất giỏi</div>
+  </div>
+
+  <div class="lesson"><div class="lh"><span class="no">#1</span><h3>Công thức prompt 5 bước V.B.N.Đ.M</h3><span class="t">60' · ChatGPT / Gemini / Claude</span></div><div class="lb">
+    <div class="pain"><b>Nỗi đau:</b> "Dùng ChatGPT rồi nhưng viết ra chung chung, sửa còn lâu hơn tự viết."</div>
+    <div class="cols"><div><span class="lbl">Các bước</span><ol>
+      <li>Gõ prompt 1 câu → xem kết quả "nhạt".</li>
+      <li>Viết lại đủ 5 thành phần V.B.N.Đ.M → so sánh.</li>
+      <li>Thêm 3 kỹ thuật: <b>hỏi ngược</b>, <b>chia bước</b>, <b>tự chấm điểm</b>.</li>
+      <li>Chưa ưng thì nói tiếp: "ngắn hơn", "thêm số liệu"…</li>
+    </ol></div>
+    <div><span class="lbl">Prompt mẫu</span><pre><span class="v">[V]</span> Bạn là copywriter 10 năm ngành mỹ phẩm.
+<span class="v">[B]</span> Serum vitamin C 350k, khách nữ 24–35 da dầu mụn.
+<span class="v">[N]</span> Viết 3 bài Facebook cho tuần ra mắt.
+<span class="v">[Đ]</span> ≤150 chữ, dòng đầu là hook, 1 lời kêu gọi.
+<span class="v">[M]</span> Giọng chị em; không dùng "tốt nhất", "số 1".</pre></div></div>
+    <div class="out"><b>Sản phẩm:</b> File "Thư viện prompt của tôi" với 10 prompt cho việc lặp lại hằng tuần.</div>
+  </div></div>
+
+  <div class="lesson"><div class="lh"><span class="no">#2</span><h3>"Dạy AI giọng của tôi" – Brand Voice</h3><span class="t">45' · ChatGPT / Claude</span></div><div class="lb">
+    <div class="pain"><b>Nỗi đau:</b> "AI viết đúng nhưng không phải là tôi. Người quen đọc là biết máy viết."</div>
+    <div class="cols"><div><span class="lbl">Các bước</span><ol>
+      <li>Gom 3–5 bài viết cũ bạn ưng nhất (hoặc ghi âm 3 phút nói về nghề).</li>
+      <li>Nhờ AI phân tích: tính cách, xưng hô, nhịp câu, từ hay dùng, từ cấm, đoạn mẫu.</li>
+      <li>Sửa lại cho đúng ý, lưu vào Custom Instructions.</li>
+      <li>Viết thử 1 bài, nhờ người khác đoán "người hay máy".</li>
+    </ol></div>
+    <div><span class="lbl">Prompt mẫu</span><pre>Phân tích 3 bài viết dưới đây và viết "Hướng dẫn giọng văn" 1 trang: tính cách (3 tính từ), xưng hô, nhịp câu, từ hay dùng, điều KHÔNG BAO GIỜ viết, 2 đoạn mẫu.
+--- BÀI 1 --- [dán]</pre></div></div>
+    <div class="out"><b>Sản phẩm:</b> Brand Voice 1 trang + 1 bài viết đúng giọng của bạn.</div>
+  </div></div>
+
+  <div class="lesson"><div class="lh"><span class="no">#8</span><h3>Biên tập "bỏ giọng AI" – checklist 7 điểm</h3><span class="t">30' · Không cần công cụ</span></div><div class="lb">
+    <div class="pain"><b>Nỗi đau:</b> "Bài AI viết đọc là biết, người xem lướt qua, nền tảng ít phân phối."</div>
+    <div class="cols"><div><span class="lbl">Checklist 7 điểm</span><ol>
+      <li>Câu mở đầu gây tò mò trong 1 giây?</li>
+      <li>Có chi tiết thật (tên, số, thời gian)?</li>
+      <li>Bỏ từ sáo rỗng: "hành trình", "nâng tầm"…</li>
+      <li>Nhịp câu có xen câu ngắn?</li>
+      <li>Đúng Brand Voice?</li>
+      <li>Emoji, in đậm không lạm dụng?</li>
+      <li>Thông tin đã kiểm chứng, không hứa quá đà?</li>
+    </ol></div>
+    <div><span class="lbl">Prompt mẫu</span><pre>Đóng vai biên tập viên khó tính. Rà bài dưới đây theo 7 tiêu chí trên, liệt kê cụm từ "giống AI" và từ thay thế đời thường, đánh dấu [CHÈN CÂU CHUYỆN THẬT], rồi viết lại bản cuối.
+Bài viết: [dán]</pre>
+    <div class="tip">💡 Trò chơi lớp học: "Người hay máy?" – đọc 5 đoạn văn, cả lớp đoán.</div></div></div>
+    <div class="out"><b>Sản phẩm:</b> 1 bài hoàn chỉnh sẵn sàng đăng + checklist lưu trên điện thoại.</div>
+  </div></div>
+</section>
+
+<!-- ================= BUỔI 2 ================= -->
+<section>
+  <div class="sec" style="margin-top:6px"><div class="num">2</div><div><h2>Không bao giờ hết ý tưởng nữa</h2><div class="meta">Bài #4 · #5 · #6 · #10 — Sản phẩm buổi: Persona + Lịch nội dung 30 ngày</div></div></div>
+
+  <div class="lesson"><div class="lh"><span class="no">#4</span><h3>Chân dung khách hàng từ bình luận, inbox thật</h3><span class="t">40' · Chatbot AI</span></div><div class="lb">
+    <div class="pain"><b>Nỗi đau:</b> "Viết theo cảm tính, không biết khách thật sự quan tâm gì."</div>
+    <div class="cols"><div><span class="lbl">Các bước</span><ol>
+      <li>Gom 20–50 bình luận, tin nhắn, đánh giá. <b>Xóa tên, số điện thoại.</b></li>
+      <li>Nhờ AI rút ra: họ là ai, đau gì, muốn gì, sợ gì, nói bằng từ ngữ nào.</li>
+      <li>Bổ sung hiểu biết riêng, đặt tên persona (VD: "Chị Linh văn phòng").</li>
+    </ol></div>
+    <div><span class="lbl">Prompt mẫu</span><pre>Từ [40] bình luận thật dưới đây, tạo Chân dung khách hàng: thông tin cơ bản, top 10 nỗi đau (trích nguyên văn), top 5 mong muốn, top 5 rào cản khi mua, 10 câu hỏi hay gặp. Ghi rõ chỗ nào là "(suy đoán)".</pre></div></div>
+    <div class="out"><b>Sản phẩm:</b> Persona 1 trang + 10 nỗi đau + 10 câu hỏi làm nguyên liệu nội dung.</div>
+  </div></div>
+
+  <div class="lesson"><div class="lh"><span class="no">#5</span><h3>Phân tích đối thủ trong 15 phút</h3><span class="t">25' · Perplexity + ChatGPT</span></div><div class="lb">
+    <div class="pain"><b>Nỗi đau:</b> "Không biết đối thủ làm gì, mình khác họ ở đâu."</div>
+    <div class="cols"><div><span class="lbl">Các bước</span><ol>
+      <li>Perplexity tìm 5 đối thủ, giá, thông điệp (kèm nguồn).</li>
+      <li>Copy giới thiệu + 10 đánh giá 1–3 sao của 3 đối thủ.</li>
+      <li>ChatGPT lập bảng so sánh, tìm 3 khoảng trống, đề xuất câu định vị.</li>
+    </ol></div>
+    <div><span class="lbl">Prompt mẫu</span><pre>Lập bảng so sánh 3 đối thủ: giá, sản phẩm chủ lực, thông điệp, điểm mạnh, điểm yếu theo đánh giá khách. Chỉ ra 3 khoảng trống tôi khai thác được và 1 câu định vị dưới 15 chữ.</pre></div></div>
+    <div class="out"><b>Sản phẩm:</b> Bảng đối thủ + câu định vị + 3 thông điệp chính.</div>
+  </div></div>
+
+  <div class="illus" style="display:flex;gap:14px;align-items:center">
+    <svg width="210" height="150" viewBox="0 0 210 150">
+      <polygon points="105,5 145,50 65,50" fill="#e36414"/><text x="105" y="40" font-size="10" text-anchor="middle" fill="#fff" font-weight="700">Bán hàng</text>
+      <polygon points="65,53 145,53 175,95 35,95" fill="#2c7a7b"/><text x="105" y="80" font-size="10.5" text-anchor="middle" fill="#fff" font-weight="700">Kết nối ~30%</text>
+      <polygon points="35,98 175,98 205,145 5,145" fill="#0f4c5c"/><text x="105" y="126" font-size="11" text-anchor="middle" fill="#fff" font-weight="700">Giá trị ~50%</text>
+      <text x="160" y="30" font-size="9" fill="#e36414" font-weight="700">~20%</text>
+    </svg>
+    <div><b style="color:var(--c1)">Tháp nội dung 3 tầng</b><br>
+      <b>Giá trị:</b> mẹo, sai lầm, hướng dẫn – xây niềm tin.<br>
+      <b>Kết nối:</b> câu chuyện, hậu trường, câu hỏi tương tác.<br>
+      <b>Bán hàng:</b> ưu đãi, phản hồi khách, so sánh.<br>
+      <span class="muted">Công thức ý tưởng: 1 nỗi đau × nhiều góc nhìn.</span></div>
+  </div>
+
+  <div class="lesson"><div class="lh"><span class="no">#6</span><h3>30 ý tưởng nội dung trong 5 phút</h3><span class="t">30' · Chatbot AI</span></div><div class="lb">
+    <div class="pain"><b>Nỗi đau:</b> "Ngày nào cũng hỏi: hôm nay đăng gì?"</div>
+    <div class="cols"><div><span class="lbl">Các bước</span><ol>
+      <li>Dán persona + 10 nỗi đau từ Bài #4.</li>
+      <li>Tạo 30 ý tưởng theo tháp: 15 giá trị, 9 kết nối, 6 bán hàng.</li>
+      <li>Đánh dấu ⭐ 10 ý tưởng hay nhất.</li>
+    </ol></div>
+    <div><span class="lbl">Prompt mẫu</span><pre>Dựa trên persona và nỗi đau dưới đây, đưa ra 30 ý tưởng cho [kênh] theo tháp nội dung. Bảng: STT | Tầng | Tiêu đề | Nỗi đau | Định dạng. Mỗi ý tưởng phải cụ thể cho khách này.</pre></div></div>
+    <div class="out"><b>Sản phẩm:</b> Kho 30 ý tưởng, 10 ý tưởng ưu tiên.</div>
+  </div></div>
+
+  <div class="lesson"><div class="lh"><span class="no">#10</span><h3>Lịch nội dung 30 ngày tự động</h3><span class="t">40' · ChatGPT + Google Sheets</span></div><div class="lb">
+    <div class="pain"><b>Nỗi đau:</b> "Đăng lúc có lúc không, bận là bỏ kênh."</div>
+    <div class="cols"><div><span class="lbl">Các bước</span><ol>
+      <li>AI xếp 30 ý tưởng thành lịch: 3–5 bài/tuần, không 2 bài bán hàng liền nhau.</li>
+      <li>Dán vào Google Sheets, thêm cột Trạng thái + Kết quả.</li>
+      <li>Chọn 1 buổi/tuần "làm hàng loạt".</li>
+    </ol></div>
+    <div><span class="lbl">Prompt mẫu</span><pre>Lập lịch 30 ngày từ [ngày] cho [kênh], [5] bài/tuần, gắn dịp đặc biệt [ngày lương, 11.11]. Cột: Ngày | Tầng | Tiêu đề | Hook | Định dạng | Lời kêu gọi. Xuất dạng dán thẳng vào Google Sheets.</pre></div></div>
+    <div class="out"><b>Sản phẩm:</b> Lịch nội dung 30 ngày trên Google Sheets.</div>
+  </div></div>
+</section>
+
+<!-- ================= BUỔI 3 ================= -->
+<section>
+  <div class="sec" style="margin-top:6px"><div class="num">3</div><div><h2>Viết bài ra đơn trong 10 phút</h2><div class="meta">Bài #7 · #9 · #21 · #20 — Sản phẩm buổi: 10 bài viết + kịch bản chốt sale + 20 mẫu quảng cáo</div></div></div>
+
+  <div class="illus">
+    <svg width="100%" viewBox="0 0 600 62">
+      <rect x="0" y="6" width="180" height="40" rx="8" fill="#e36414"/><text x="90" y="24" font-size="13" text-anchor="middle" fill="#fff" font-weight="800">P · Vấn đề</text><text x="90" y="39" font-size="9.5" text-anchor="middle" fill="#fff">Gọi đúng nỗi đau</text>
+      <path d="M186 26 L206 26" stroke="#5b6475" stroke-width="2.5" marker-end="url(#a)"/>
+      <rect x="212" y="6" width="180" height="40" rx="8" fill="#f2a541"/><text x="302" y="24" font-size="13" text-anchor="middle" fill="#1d2433" font-weight="800">A · Khoét sâu</text><text x="302" y="39" font-size="9.5" text-anchor="middle" fill="#1d2433">Hậu quả nếu không giải quyết</text>
+      <path d="M398 26 L418 26" stroke="#5b6475" stroke-width="2.5" marker-end="url(#a)"/>
+      <rect x="424" y="6" width="176" height="40" rx="8" fill="#0f4c5c"/><text x="512" y="24" font-size="13" text-anchor="middle" fill="#fff" font-weight="800">S · Giải pháp</text><text x="512" y="39" font-size="9.5" text-anchor="middle" fill="#fff">Sản phẩm + bằng chứng + kêu gọi</text>
+      <defs><marker id="a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5b6475"/></marker></defs>
+    </svg>
+    <div class="cap">Công thức PAS – hợp với sản phẩm giải quyết vấn đề. AIDA (Chú ý → Thích thú → Mong muốn → Hành động) hợp với sản phẩm mới, ưu đãi.</div>
+  </div>
+
+  <div class="lesson"><div class="lh"><span class="no">#7</span><h3>Bài bán hàng AIDA / PAS + 20 câu hook</h3><span class="t">45' · ChatGPT / Claude</span></div><div class="lb">
+    <div class="pain"><b>Nỗi đau:</b> "Viết cả tiếng mà không ra đơn, bài toàn khoe sản phẩm."</div>
+    <div class="cols"><div><span class="lbl">8 kiểu hook</span><ol>
+      <li>Câu hỏi trúng nỗi đau · 2. Con số · 3. Sai lầm · 4. Gây tò mò</li>
+      <li value="5">Câu nói của khách · 6. Phản trực giác · 7. Câu chuyện · 8. Gọi tên đối tượng</li>
+    </ol>
+    <span class="lbl">Các bước</span><ol><li>Tạo 20 hook, chọn 3.</li><li>Viết bài PAS + Brand Voice.</li><li>Biên tập theo checklist #8.</li></ol></div>
+    <div><span class="lbl">Prompt mẫu</span><pre>Viết bài Facebook bán [sản phẩm] theo PAS, mở đầu bằng hook "[hook]". S gồm 1 bằng chứng + ưu đãi + lời kêu gọi nhắn tin. 150–200 chữ, ≤3 emoji, không cam kết tuyệt đối. Giọng theo Brand Voice: [dán]</pre></div></div>
+    <div class="out"><b>Sản phẩm:</b> 20 hook + 3 bài bán hàng (PAS, AIDA, kể chuyện).</div>
+  </div></div>
+
+  <div class="lesson"><div class="lh"><span class="no">#9</span><h3>1 nội dung → 10 định dạng</h3><span class="t">30' · ChatGPT / Claude</span></div><div class="lb">
+    <div class="pain"><b>Nỗi đau:</b> "Mỗi kênh một kiểu, làm không xuể. Viết 1 bài hay mà chỉ đăng được 1 lần."</div>
+    <div class="cols"><div><span class="lbl">Ý chính</span><ol>
+      <li>Giữ thông điệp lõi, đổi hình thức theo "luật" từng kênh.</li>
+      <li>Caption TikTok, kịch bản 30s, carousel, email, Zalo, LinkedIn, dàn ý blog.</li>
+      <li>Rải đều vào lịch 1–2 tuần.</li>
+    </ol></div>
+    <div><span class="lbl">Prompt mẫu</span><pre>Chuyển nội dung gốc thành: caption TikTok, kịch bản video 30s, carousel 6 slide, email (3 tiêu đề), tin nhắn Zalo khách cũ, bài LinkedIn, dàn ý blog. Giữ thông điệp lõi.
+NỘI DUNG GỐC: [dán]</pre></div></div>
+    <div class="out"><b>Sản phẩm:</b> 5–10 định dạng từ 1 nội dung → tổng cộng 10 bài viết.</div>
+  </div></div>
+</section>
+
+<section>
+  <div class="lesson"><div class="lh"><span class="no">#21</span><h3>Kịch bản inbox chốt sale & xử lý từ chối</h3><span class="t">35' · ChatGPT / Claude</span></div><div class="lb">
+    <div class="pain"><b>Nỗi đau:</b> "Khách hỏi giá xong rồi im lặng." – "Không biết trả lời khi khách chê đắt."</div>
+    <div class="illus" style="margin:4px 0 8px">
+      <svg width="100%" viewBox="0 0 600 44">
+        <g font-size="10" font-weight="700" text-anchor="middle">
+          <rect x="0" y="4" width="112" height="34" rx="17" fill="#e6f0f2"/><text x="56" y="25" fill="#0f4c5c">1. Chào & cảm ơn</text>
+          <rect x="122" y="4" width="112" height="34" rx="17" fill="#e6f0f2"/><text x="178" y="25" fill="#0f4c5c">2. Hỏi để hiểu</text>
+          <rect x="244" y="4" width="112" height="34" rx="17" fill="#e6f0f2"/><text x="300" y="25" fill="#0f4c5c">3. Tư vấn đúng</text>
+          <rect x="366" y="4" width="112" height="34" rx="17" fill="#fdeee4"/><text x="422" y="25" fill="#e36414">4. Giá + giá trị</text>
+          <rect x="488" y="4" width="112" height="34" rx="17" fill="#e36414"/><text x="544" y="25" fill="#fff">5. Chốt lựa chọn</text>
+        </g>
+      </svg>
+    </div>
+    <div class="cols"><div><span class="lbl">Xử lý từ chối</span><ol>
+      <li><b>Đồng cảm</b> → <b>Hỏi lý do thật</b> → <b>Đưa bằng chứng</b> → <b>Đề xuất bước nhỏ</b>.</li>
+      <li>10 lời từ chối hay gặp: đắt, để suy nghĩ, hỏi chồng/vợ, chỗ khác rẻ hơn, sợ hàng giả…</li>
+      <li>Luyện với "khách hàng ảo" rồi lưu thành tin nhắn mẫu.</li>
+    </ol></div>
+    <div><span class="lbl">Prompt luyện tập</span><pre>Đóng vai khách [persona] hỏi mua [sản phẩm], khó tính, đưa 2–3 lời từ chối. Chờ tôi trả lời từng tin. Khi tôi gõ "KẾT THÚC", chấm điểm cách tư vấn (thang 10) và chỉ ra 3 điểm cần cải thiện.</pre></div></div>
+    <div class="out"><b>Sản phẩm:</b> Kịch bản 5 bước + bảng 10 lời từ chối + 5 tin nhắn mẫu.</div>
+  </div></div>
+
+  <div class="lesson"><div class="lh"><span class="no">#20</span><h3>20 mẫu quảng cáo để A/B test</h3><span class="t">25' · ChatGPT / Claude</span></div><div class="lb">
+    <div class="pain"><b>Nỗi đau:</b> "Chạy quảng cáo tốn tiền, không biết mẫu nào hiệu quả."</div>
+    <div class="cols"><div><span class="lbl">Ý chính</span><ol>
+      <li><b>A/B test:</b> mỗi lần chỉ đổi 1 yếu tố, giữ phiên bản thắng.</li>
+      <li>5 góc độ: Nỗi đau · Lợi ích · Bằng chứng · Ưu đãi · Câu chuyện.</li>
+      <li>Meta Advantage+ / Google Performance Max tự tối ưu – việc của bạn là cung cấp đủ phiên bản tốt.</li>
+    </ol></div>
+    <div><span class="lbl">Prompt mẫu</span><pre>Viết 20 mẫu quảng cáo cho [sản phẩm, ưu đãi], 4 mẫu/góc độ. Mỗi mẫu: văn bản chính (hook câu đầu), tiêu đề &lt;40 ký tự, mô tả &lt;30 ký tự. Tuân thủ chính sách: không cam kết tuyệt đối, không ám chỉ đặc điểm cá nhân.</pre></div></div>
+    <div class="out"><b>Sản phẩm:</b> 20 mẫu quảng cáo (chọn 10) + bảng theo dõi A/B.</div>
+  </div></div>
+</section>
+
+<!-- ================= BUỔI 4 ================= -->
+<section>
+  <div class="sec" style="margin-top:6px"><div class="num">4</div><div><h2>Ảnh đẹp như studio, không cần thuê designer</h2><div class="meta">Bài #11 · #12 · #13 · #14 — Sản phẩm buổi: 10 hình ảnh + Brand Kit trên Canva</div></div></div>
+
+  <div class="illus">
+    <div class="formula">
+      <div class="f1"><b>C</b>Chủ thể<br>Chai thủy tinh hổ phách</div>
+      <div class="f2"><b>B</b>Bối cảnh<br>Đá trắng, lát cam, lá xanh</div>
+      <div class="f3"><b>Á</b>Ánh sáng<br>Nắng sáng, bóng mềm</div>
+      <div class="f4"><b>P</b>Phong cách<br>Cao cấp, tối giản</div>
+      <div class="f5"><b>T</b>Tỉ lệ<br>4:5 · chừa chỗ chèn chữ</div>
+    </div>
+    <div class="cap">Công thức prompt hình ảnh C.B.Á.P.T · Tỉ lệ nên nhớ: 1:1 bài vuông · 4:5 bài dọc · 9:16 story/Reels · 16:9 ảnh bìa YouTube</div>
+  </div>
+
+  <div class="lesson"><div class="lh"><span class="no">#11</span><h3>Prompt hình ảnh 5 thành phần</h3><span class="t">35' · ChatGPT / Gemini / Ideogram</span></div><div class="lb">
+    <div class="pain"><b>Nỗi đau:</b> "Gõ vào AI ra ảnh lạ hoắc. Thuê thiết kế thì đắt và chờ lâu."</div>
+    <div class="cols"><div><span class="lbl">Các bước</span><ol>
+      <li>Viết prompt C.B.Á.P.T → tạo ảnh.</li>
+      <li>Sửa bằng hội thoại: "giữ bố cục, đổi nền màu be".</li>
+      <li>Chữ tiếng Việt dễ sai dấu → tạo ảnh <b>không chữ</b>, chèn chữ sau ở Canva.</li>
+    </ol></div>
+    <div><span class="lbl">Prompt mẫu</span><pre>Tạo ảnh quảng cáo: [chủ thể], đặt trên [bối cảnh], ánh sáng [tự nhiên buổi sáng], phong cách [ảnh sản phẩm cao cấp, tối giản], tỉ lệ 4:5, chừa khoảng trống phía trên. Không chữ, không logo.</pre></div></div>
+    <div class="out"><b>Sản phẩm:</b> 3 ảnh (sản phẩm, minh họa bài viết, nền story 9:16).</div>
+  </div></div>
+
+  <div class="lesson"><div class="lh"><span class="no">#12</span><h3>Ảnh sản phẩm "studio" từ ảnh chụp điện thoại</h3><span class="t">35' · Canva + ChatGPT / Gemini</span></div><div class="lb">
+    <div class="pain"><b>Nỗi đau:</b> "Ảnh chụp ở nhà kém sang, thuê studio mỗi lần có sản phẩm mới thì tốn."</div>
+    <div class="cols"><div><span class="lbl">Các bước</span><ol>
+      <li>Chụp đúng cách: gần cửa sổ, nền giấy trắng, nhãn hướng thẳng camera.</li>
+      <li><b>Cách 1 (Canva):</b> xóa nền → đặt lên nền thương hiệu → thêm bóng → mở rộng ảnh sang 9:16.</li>
+      <li><b>Cách 2 (AI):</b> tải ảnh lên, yêu cầu đặt vào bối cảnh mới, giữ nguyên sản phẩm.</li>
+    </ol></div>
+    <div><span class="lbl">Prompt mẫu</span><pre>Đây là ảnh sản phẩm thật. Đặt sản phẩm vào [bối cảnh], tỉ lệ 4:5. GIỮ NGUYÊN hình dáng, màu, nhãn và chữ trên sản phẩm. Đổ bóng tự nhiên.</pre>
+    <div class="tip">⚠️ Ảnh phải đúng sản phẩm thật. Không tạo ảnh "trước – sau" giả.</div></div></div>
+    <div class="out"><b>Sản phẩm:</b> 3 ảnh sản phẩm studio dùng ngay cho bài đăng, gian hàng.</div>
+  </div></div>
+</section>
+
+<section>
+  <div class="lesson"><div class="lh"><span class="no">#13</span><h3>Banner, thumbnail, bộ nhận diện bằng Canva AI</h3><span class="t">45' · Canva</span></div><div class="lb">
+    <div class="pain"><b>Nỗi đau:</b> "Thiết kế mỗi lần một kiểu, kênh nhìn lộn xộn, thiếu chuyên nghiệp."</div>
+    <div class="illus" style="margin:4px 0 8px;display:flex;gap:14px;align-items:center">
+      <svg width="190" height="56" viewBox="0 0 190 56"><rect x="0" y="4" width="44" height="44" rx="8" fill="#0f4c5c"/><rect x="48" y="4" width="44" height="44" rx="8" fill="#e36414"/><rect x="96" y="4" width="44" height="44" rx="8" fill="#f2a541"/><rect x="144" y="4" width="44" height="44" rx="8" fill="#fff" stroke="#e3e6ec"/></svg>
+      <div style="font-size:9.3pt"><b>Bộ nhận diện tối thiểu:</b> 1 màu chính · 1 màu phụ · 1 màu nhấn + trắng/đen · 2 font hỗ trợ tiếng Việt · logo chữ đơn giản.<br><b>3 quy tắc:</b> một điểm nhấn · chữ ít, to, rõ · chừa khoảng trống.</div>
+    </div>
+    <div class="cols"><div><span class="lbl">Các bước</span><ol>
+      <li>ChatGPT gợi ý bảng màu (mã HEX) + cặp font theo tính cách thương hiệu.</li>
+      <li>Lưu vào Brand Kit trên Canva.</li>
+      <li>Magic Design tạo ảnh bìa, thumbnail, carousel 5 slide → áp Brand Kit.</li>
+    </ol></div>
+    <div><span class="lbl">Prompt mẫu</span><pre>Thương hiệu [tên], bán [sản phẩm] cho [persona], tính cách [3 tính từ]. Đề xuất 2 phương án: bảng 4 màu (HEX), 1 cặp Google Fonts hỗ trợ tiếng Việt, ý tưởng logo, phong cách hình ảnh.</pre></div></div>
+    <div class="out"><b>Sản phẩm:</b> Brand Kit + ảnh bìa + thumbnail + carousel → tổng cộng 10+ hình ảnh.</div>
+  </div></div>
+
+  <div class="lesson"><div class="lh"><span class="no">#14</span><h3>Ảnh chân dung thương hiệu cá nhân bằng AI</h3><span class="t">20' · ChatGPT / Gemini + Canva</span></div><div class="lb">
+    <div class="pain"><b>Nỗi đau:</b> "Không có ảnh đẹp làm ảnh đại diện, ảnh bìa. Đi chụp studio thì tốn và ngại."</div>
+    <div class="cols"><div><span class="lbl">Các bước</span><ol>
+      <li>Chọn selfie rõ mặt, đủ sáng, không filter.</li>
+      <li>Yêu cầu AI giữ nguyên khuôn mặt, đổi trang phục, bối cảnh.</li>
+      <li>Làm ảnh bìa trên Canva với tên + câu định vị (Bài #5).</li>
+    </ol>
+    <div class="tip">⚠️ Chỉ dùng ảnh của chính mình. Ảnh quá khác ngoài đời sẽ phản tác dụng.</div></div>
+    <div><span class="lbl">Prompt mẫu</span><pre>Đây là ảnh của tôi. Tạo ảnh chân dung chuyên nghiệp: GIỮ NGUYÊN khuôn mặt, tóc, màu da. Trang phục [sơ mi trắng], bối cảnh [văn phòng sáng, hậu cảnh mờ], ánh sáng studio mềm, phong cách ảnh chụp thật, tỉ lệ 1:1.</pre></div></div>
+    <div class="out"><b>Sản phẩm:</b> Ảnh đại diện + ảnh bìa thương hiệu cá nhân.</div>
+  </div></div>
+</section>
+
+<!-- ================= BUỔI 5 ================= -->
+<section>
+  <div class="sec" style="margin-top:6px"><div class="num">5</div><div><h2>Video viral mà không cần lên hình</h2><div class="meta">Bài #15 – #19 — Sản phẩm buổi: 3 video ngắn hoàn chỉnh</div></div></div>
+
+  <div class="illus">
+    <svg width="100%" viewBox="0 0 600 58">
+      <rect x="0" y="6" width="80" height="32" rx="6" fill="#e36414"/><text x="40" y="27" font-size="11" text-anchor="middle" fill="#fff" font-weight="800">HOOK</text>
+      <rect x="84" y="6" width="436" height="32" rx="6" fill="#0f4c5c"/><text x="302" y="27" font-size="11" text-anchor="middle" fill="#fff" font-weight="800">NỘI DUNG · 1 thông điệp · đổi cảnh mỗi 2–4 giây</text>
+      <rect x="524" y="6" width="76" height="32" rx="6" fill="#f2a541"/><text x="562" y="27" font-size="11" text-anchor="middle" fill="#1d2433" font-weight="800">KÊU GỌI</text>
+      <text x="40" y="52" font-size="9" text-anchor="middle" fill="#5b6475">0–3 giây</text><text x="302" y="52" font-size="9" text-anchor="middle" fill="#5b6475">3–50 giây</text><text x="562" y="52" font-size="9" text-anchor="middle" fill="#5b6475">5–7 giây cuối</text>
+    </svg>
+    <div class="cap">Cấu trúc video ngắn 30–60 giây · Luôn bật phụ đề vì nhiều người xem không bật tiếng</div>
+  </div>
+
+  <div class="lesson"><div class="lh"><span class="no">#15</span><h3>Kịch bản video ngắn với hook 3 giây</h3><span class="t">30' · ChatGPT / Claude</span></div><div class="lb">
+    <div class="pain"><b>Nỗi đau:</b> "Video đăng lên vài chục lượt xem. Không biết nói gì trước máy quay."</div>
+    <div class="cols"><div><span class="lbl">5 mẫu không cần lên hình</span><ol>
+      <li>Danh sách "3 sai lầm khi…"</li><li>Trước – sau / quy trình (quay tay thao tác)</li><li>Hỏi – đáp câu hỏi của khách</li><li>Hậu trường</li><li>Quay màn hình hướng dẫn</li>
+    </ol></div>
+    <div><span class="lbl">Prompt mẫu</span><pre>Viết kịch bản video [30–45]s cho [TikTok] về "[chủ đề]", mẫu [Danh sách]. Bảng: Thời gian | Hình ảnh | Lời thoại | Chữ trên màn hình. 3 phương án hook 3 giây, đổi cảnh mỗi 2–4s, không cần người xuất hiện, kết thúc bằng [lời kêu gọi].</pre></div></div>
+    <div class="out"><b>Sản phẩm:</b> 3 kịch bản dạng bảng + danh sách cảnh cần quay.</div>
+  </div></div>
+
+  <div class="lesson"><div class="lh"><span class="no">#16</span><h3>Dựng video nhanh với CapCut</h3><span class="t">45' · CapCut</span></div><div class="lb">
+    <div class="pain"><b>Nỗi đau:</b> "Dựng video mất cả buổi, phần mềm phức tạp, gõ phụ đề từng chữ."</div>
+    <div class="cols"><div><span class="lbl">Quy trình 6 bước</span><ol>
+      <li>Nhập cảnh quay → sắp xếp theo kịch bản.</li><li>Cắt bỏ khoảng lặng.</li><li><b>Phụ đề tự động</b> → rà lỗi chính tả.</li><li>Chữ hook to ở 3 giây đầu.</li><li>Nhạc nền 10–20% âm lượng.</li><li>Xuất 9:16, 1080p.</li>
+    </ol></div>
+    <div><span class="lbl">Tính năng nên dùng</span><ol>
+      <li><b>Script to video</b>: dán kịch bản → có video kèm B-roll và giọng đọc.</li>
+      <li><b>Mẫu (Templates)</b>: thay ảnh/video của mình vào.</li>
+      <li><b>Xóa nền video</b> cho video hướng dẫn.</li>
+    </ol><div class="tip">💡 Thay B-roll chung chung bằng cảnh quay thật của mình.</div></div></div>
+    <div class="out"><b>Sản phẩm:</b> 2 video ngắn hoàn chỉnh.</div>
+  </div></div>
+</section>
+
+<section>
+  <div class="lesson"><div class="lh"><span class="no">#17</span><h3>Giọng đọc AI tiếng Việt</h3><span class="t">15' · CapCut / ElevenLabs</span></div><div class="lb">
+    <div class="pain"><b>Nỗi đau:</b> "Giọng mình không hay, ngại thu âm, nhà ồn."</div>
+    <div class="cols"><div><span class="lbl">Ý chính</span><ol>
+      <li>Chọn giọng hợp thương hiệu: nữ trẻ trung, nam trầm ấm, giọng vùng miền gần khách.</li>
+      <li>Viết cho tai: câu ngắn, dấu phẩy để ngắt, "350k" → "ba trăm năm mươi nghìn".</li>
+      <li>Nhân bản giọng: chỉ dùng giọng của chính mình.</li>
+    </ol></div>
+    <div><span class="lbl">Prompt mẫu</span><pre>Chuyển kịch bản thành văn bản tối ưu cho giọng đọc AI tiếng Việt: câu ngắn, thêm dấu phẩy chỗ ngắt hơi, viết số và ký hiệu thành chữ, bỏ emoji.
+[dán kịch bản]</pre></div></div>
+    <div class="out"><b>Sản phẩm:</b> 1 video có giọng đọc AI tự nhiên.</div>
+  </div></div>
+
+  <div class="lesson"><div class="lh"><span class="no">#18</span><h3>Video người dẫn ảo – lên hình mà không cần quay</h3><span class="t">25' · HeyGen</span></div><div class="lb">
+    <div class="pain"><b>Nỗi đau:</b> "Ngại lên hình, nhưng ai cũng bảo thương hiệu cá nhân phải xuất hiện."</div>
+    <div class="cols"><div><span class="lbl">Nên & không nên</span><ol>
+      <li>✅ <b>Nên:</b> video kiến thức, hướng dẫn, đa ngôn ngữ, cần đều đặn.</li>
+      <li>❌ <b>Không nên:</b> câu chuyện cảm xúc, xử lý khủng hoảng, livestream.</li>
+      <li>Gợi ý: <b>70% avatar</b> cho kiến thức + <b>30% người thật</b> cho câu chuyện.</li>
+    </ol></div>
+    <div><span class="lbl">Các bước</span><ol>
+      <li>Chọn avatar (có sẵn hoặc của chính bạn), khung 9:16.</li>
+      <li>Dán kịch bản đã tối ưu (#17), chọn giọng tiếng Việt.</li>
+      <li>Xuất → đưa vào CapCut thêm phụ đề, B-roll.</li>
+    </ol><div class="tip">🏷️ Gắn nhãn nội dung AI. Không dùng avatar đóng giả khách hàng.</div></div></div>
+    <div class="out"><b>Sản phẩm:</b> 1 video người dẫn ảo → tổng cộng 3 video ngắn.</div>
+  </div></div>
+
+  <div class="lesson"><div class="lh"><span class="no">#19</span><h3>Cắt 1 video dài thành 10 video ngắn</h3><span class="t">20' · CapCut / OpusClip</span></div><div class="lb">
+    <div class="pain"><b>Nỗi đau:</b> "Livestream cả tiếng, xong là trôi mất."</div>
+    <div class="cols"><div><span class="lbl">Các bước</span><ol>
+      <li>Tải video dài lên → công cụ đề xuất clip hay, cắt khung 9:16, thêm phụ đề.</li>
+      <li>Chỉ chọn clip trọn ý, có hook tốt.</li>
+      <li>Cách miễn phí: đưa bản ghi chữ cho ChatGPT chọn đoạn, tự cắt trong CapCut.</li>
+    </ol></div>
+    <div><span class="lbl">Prompt mẫu</span><pre>Từ bản ghi chữ có mốc thời gian dưới đây, chọn 5 đoạn 30–60s trọn ý. Ghi mốc bắt đầu – kết thúc, 1 câu hook chữ trên màn hình, caption &lt;40 chữ + 5 hashtag.
+[dán transcript]</pre></div></div>
+    <div class="out"><b>Sản phẩm:</b> 3–5 clip ngắn + caption, xếp vào lịch.</div>
+  </div></div>
+</section>
+
+<!-- ================= BUỔI 6 ================= -->
+<section>
+  <div class="sec" style="margin-top:6px"><div class="num">6</div><div><h2>Một mình bằng cả một team</h2><div class="meta">Bài #3 · #22 · #23 · #24 — Sản phẩm buổi: Trợ lý AI riêng + checklist GEO + kế hoạch 90 ngày</div></div></div>
+
+  <div class="illus">
+    <svg width="100%" viewBox="0 0 600 70">
+      <g text-anchor="middle" font-weight="700">
+        <rect x="0" y="8" width="150" height="50" rx="10" fill="#0f4c5c"/><text x="75" y="30" font-size="12" fill="#fff">Hướng dẫn</text><text x="75" y="47" font-size="9" fill="#fff" font-weight="400">Vai trò, quy trình, quy tắc</text>
+        <text x="168" y="40" font-size="22" fill="#5b6475">+</text>
+        <rect x="186" y="8" width="150" height="50" rx="10" fill="#2c7a7b"/><text x="261" y="30" font-size="12" fill="#fff">Tài liệu</text><text x="261" y="47" font-size="9" fill="#fff" font-weight="400">Brand Voice, persona, sản phẩm</text>
+        <text x="354" y="40" font-size="22" fill="#5b6475">+</text>
+        <rect x="372" y="8" width="110" height="50" rx="10" fill="#f2a541"/><text x="427" y="30" font-size="12" fill="#1d2433">Lệnh nhanh</text><text x="427" y="47" font-size="9" fill="#1d2433" font-weight="400">Nút gợi ý sẵn</text>
+        <text x="500" y="40" font-size="22" fill="#5b6475">=</text>
+        <rect x="518" y="8" width="82" height="50" rx="10" fill="#e36414"/><text x="559" y="30" font-size="12" fill="#fff">Trợ lý</text><text x="559" y="47" font-size="12" fill="#fff">AI riêng</text>
+      </g>
+    </svg>
+  </div>
+
+  <div class="lesson"><div class="lh"><span class="no">#3</span><h3>Tạo trợ lý AI riêng (Gem / GPT / Project)</h3><span class="t">45' · Gemini · ChatGPT · Claude</span></div><div class="lb">
+    <div class="pain"><b>Nỗi đau:</b> "Mỗi lần mở chat mới lại phải giải thích lại từ đầu."</div>
+    <div class="cols"><div><span class="lbl">Các bước</span><ol>
+      <li>Chọn 1 việc lặp lại nhiều nhất trong tuần.</li>
+      <li>Nhờ ChatGPT viết phần Hướng dẫn cho trợ lý.</li>
+      <li>Tạo Gem (Gemini) / GPT hoặc Project (ChatGPT) / Project (Claude) → dán hướng dẫn, tải tài liệu.</li>
+      <li>Thử 3 nhiệm vụ, sửa chỗ chưa đúng.</li>
+    </ol>
+    <div class="tip">Gợi ý: Trợ lý Content · Trợ lý CSKH · Trợ lý Kịch bản · Trợ lý Báo cáo tuần.</div></div>
+    <div><span class="lbl">Prompt mẫu</span><pre>Viết "Hướng dẫn" cho trợ lý AI làm [việc lặp lại]: vai trò, thông tin luôn ghi nhớ, quy trình từng bước (hỏi lại nếu thiếu thông tin), định dạng đầu ra, quy tắc & điều cấm (không bịa số liệu), 3 câu lệnh khởi động.</pre></div></div>
+    <div class="out"><b>Sản phẩm:</b> 1 trợ lý AI riêng chạy được – sản phẩm "đinh" của khóa học.</div>
+  </div></div>
+
+  <div class="lesson"><div class="lh"><span class="no">#22</span><h3>Tóm tắt tài liệu, cuộc họp, nghiên cứu nhanh</h3><span class="t">25' · NotebookLM</span></div><div class="lb">
+    <div class="pain"><b>Nỗi đau:</b> "Tài liệu nhiều, không có thời gian đọc. Họp xong không ai ghi biên bản."</div>
+    <div class="cols"><div><span class="lbl">Ý chính</span><ol>
+      <li>NotebookLM trả lời <b>dựa trên tài liệu của bạn</b>, có trích nguồn.</li>
+      <li>Tạo tóm tắt, FAQ, sơ đồ tư duy, <b>bản tóm tắt âm thanh</b> (hỗ trợ tiếng Việt).</li>
+      <li>Biên bản họp: ghi âm (có báo trước) → chữ → AI tóm tắt.</li>
+    </ol></div>
+    <div><span class="lbl">Prompt biên bản</span><pre>Từ bản ghi cuộc họp, viết: tóm tắt 5 dòng, các quyết định đã chốt, bảng Việc | Người phụ trách | Hạn chót, vấn đề còn bỏ ngỏ.
+[dán bản ghi]</pre></div></div>
+    <div class="out"><b>Sản phẩm:</b> 1 sổ NotebookLM "kho kiến thức" + 1 bản tóm tắt / FAQ.</div>
+  </div></div>
+</section>
+
+<section>
+  <div class="lesson"><div class="lh"><span class="no">#23</span><h3>AI có nhắc tới thương hiệu của tôi không? (Nhập môn GEO)</h3><span class="t">25' · ChatGPT · Gemini · Perplexity</span></div><div class="lb">
+    <div class="pain"><b>Nỗi đau:</b> "Khách ngày càng hỏi AI thay vì Google. AI không biết mình thì mình mất khách mà không hay."</div>
+    <div class="cols"><div><span class="lbl">Checklist GEO 10 điểm</span><ol>
+      <li>Website/trang giới thiệu rõ: ai, bán gì, cho ai, giá.</li>
+      <li>Thông tin nhất quán trên mọi kênh.</li>
+      <li>Có Google Business Profile (nếu bán tại địa phương).</li>
+      <li>Có trang Câu hỏi thường gặp.</li>
+      <li>Bài viết: tiêu đề là câu hỏi, đoạn đầu trả lời ngay.</li>
+      <li>Có số liệu, tác giả/chuyên gia rõ ràng.</li>
+      <li>Được nhắc ở báo, review, KOC, diễn đàn.</li>
+      <li>Có đánh giá thật công khai.</li>
+      <li>Có video YouTube mô tả rõ.</li>
+      <li>Kiểm tra lại mỗi tháng.</li>
+    </ol></div>
+    <div><span class="lbl">Cách kiểm tra</span><pre>Liệt kê 10 câu hỏi khách tiềm năng có thể hỏi ChatGPT/Gemini khi tìm [sản phẩm] tại [khu vực] (VD: "nên mua… nào", "… ở đâu tốt").</pre>
+    <p style="margin-top:6px;font-size:9.3pt">→ Hỏi lần lượt trên 2–3 công cụ, ghi lại: mình có được nhắc không, đối thủ nào được nhắc, nguồn nào được trích.</p>
+    <div class="tip">⚠️ Không spam đánh giá giả, bài PR giả.</div></div></div>
+    <div class="out"><b>Sản phẩm:</b> Bảng kết quả kiểm tra + checklist đã chấm điểm + 3 việc ưu tiên.</div>
+  </div></div>
+
+  <div class="illus" style="display:flex;gap:14px;align-items:center">
+    <svg width="230" height="140" viewBox="0 0 230 140">
+      <polygon points="0,0 230,0 205,26 25,26" fill="#0f4c5c"/><text x="115" y="18" font-size="10.5" text-anchor="middle" fill="#fff" font-weight="700">Thấy (tiếp cận)</text>
+      <polygon points="25,28 205,28 183,54 47,54" fill="#2c7a7b"/><text x="115" y="46" font-size="10.5" text-anchor="middle" fill="#fff" font-weight="700">Bấm (CTR)</text>
+      <polygon points="47,56 183,56 161,82 69,82" fill="#f2a541"/><text x="115" y="74" font-size="10.5" text-anchor="middle" fill="#1d2433" font-weight="700">Nhắn tin</text>
+      <polygon points="69,84 161,84 141,110 89,110" fill="#e36414"/><text x="115" y="102" font-size="10.5" text-anchor="middle" fill="#fff" font-weight="700">Mua</text>
+      <polygon points="89,112 141,112 128,138 102,138" fill="#5f0f40"/><text x="115" y="130" font-size="8.5" text-anchor="middle" fill="#fff" font-weight="700">Mua lại</text>
+    </svg>
+    <div style="font-size:9.3pt"><b style="color:var(--c1)">Phễu tìm điểm nghẽn</b><br>Tầng nào tỉ lệ rơi mạnh nhất là chỗ cần sửa trước.<br><b>5 chỉ số đủ dùng:</b> tiếp cận · CTR · chi phí mỗi kết quả · tỉ lệ chuyển đổi · ROAS (doanh thu / chi phí quảng cáo).</div>
+  </div>
+
+  <div class="lesson"><div class="lh"><span class="no">#24</span><h3>Đọc số liệu quảng cáo / bán hàng bằng AI</h3><span class="t">30' · ChatGPT / Gemini / Claude</span></div><div class="lb">
+    <div class="pain"><b>Nỗi đau:</b> "Nhìn bảng số liệu là hoa mắt. Tiêu tiền quảng cáo mà không biết có lãi không."</div>
+    <div class="cols"><div><span class="lbl">Các bước</span><ol>
+      <li>Xuất báo cáo ra Excel/CSV. <b>Xóa thông tin khách.</b></li>
+      <li>Tải lên AI, hỏi theo prompt, yêu cầu vẽ 2 biểu đồ.</li>
+      <li>Tự kiểm tra lại 1–2 con số quan trọng.</li>
+      <li>Chọn 3 hành động tuần tới + lập kế hoạch 90 ngày.</li>
+    </ol></div>
+    <div><span class="lbl">Prompt mẫu</span><pre>Phân tích file số liệu [quảng cáo] của tôi: tính 5 chỉ số, so sánh các chiến dịch/mẫu, vẽ 2 biểu đồ quan trọng nhất, chỉ ra điểm nghẽn lớn nhất trong phễu, đề xuất 3 hành động cho tuần tới. Giải thích đơn giản, nêu rõ giả định.</pre></div></div>
+    <div class="out"><b>Sản phẩm:</b> Báo cáo phân tích 1 trang + kế hoạch 90 ngày.</div>
+  </div></div>
+</section>
+
+<!-- ================= CLOSING ================= -->
+<section class="page" style="break-before: page">
+  <h2 class="plain">Học viên mang về sau 6 buổi</h2>
+  <table>
+    <tr><th style="width:12%">Buổi</th><th>Sản phẩm</th></tr>
+    <tr><td><b>1</b></td><td>Thư viện 10 prompt cá nhân · Brand Voice · checklist biên tập 7 điểm</td></tr>
+    <tr><td><b>2</b></td><td>Chân dung khách hàng · bảng đối thủ & câu định vị · kho 30 ý tưởng · lịch nội dung 30 ngày</td></tr>
+    <tr><td><b>3</b></td><td>20 hook · 10 bài viết · kịch bản chốt sale + 10 lời từ chối · 20 mẫu quảng cáo A/B</td></tr>
+    <tr><td><b>4</b></td><td>10+ hình ảnh · ảnh sản phẩm studio · Brand Kit trên Canva · ảnh chân dung</td></tr>
+    <tr><td><b>5</b></td><td>3 kịch bản · 3 video ngắn (dựng, giọng đọc AI, người dẫn ảo) · clip cắt từ video dài</td></tr>
+    <tr><td><b>6</b></td><td>Trợ lý AI riêng · kho kiến thức NotebookLM · checklist GEO · báo cáo số liệu · kế hoạch 90 ngày</td></tr>
+  </table>
+
+  <h3 class="sub">Thử thách 21 ngày sau khóa</h3>
+  <div class="illus">
+    <svg width="100%" viewBox="0 0 600 66">
+      <g font-size="9" text-anchor="middle" font-weight="700">
+        <rect x="0" y="6" width="196" height="38" rx="8" fill="#0f4c5c"/><text x="98" y="23" fill="#fff" font-size="11">Tuần 1 · Chữ</text><text x="98" y="37" fill="#fff" font-weight="400">Mỗi ngày 1 bài viết</text>
+        <rect x="202" y="6" width="196" height="38" rx="8" fill="#2c7a7b"/><text x="300" y="23" fill="#fff" font-size="11">Tuần 2 · Ảnh</text><text x="300" y="37" fill="#fff" font-weight="400">Mỗi ngày 1 hình ảnh</text>
+        <rect x="404" y="6" width="196" height="38" rx="8" fill="#e36414"/><text x="502" y="23" fill="#fff" font-size="11">Tuần 3 · Video</text><text x="502" y="37" fill="#fff" font-weight="400">Mỗi ngày 1 video ngắn</text>
+        <text x="300" y="60" fill="#5b6475" font-weight="400">15 phút mỗi ngày · nộp trong nhóm · giảng viên chữa bài 2 lần/tuần · hoàn thành nhận chứng nhận</text>
+      </g>
+    </svg>
+  </div>
+
+  <h3 class="sub">Bước tiếp theo</h3>
+  <div class="grid3">
+    <div class="card"><h4>🚀 Khóa nâng cao</h4>Tự động hóa (Zapier/Make), AI Agent, quảng cáo chuyên sâu.</div>
+    <div class="card"><h4>🤝 Kèm 1-1</h4>Áp dụng AI vào đúng mô hình kinh doanh của bạn.</div>
+    <div class="card"><h4>🏢 Đào tạo doanh nghiệp</h4>Chương trình nội bộ cho đội marketing – sales.</div>
+  </div>
+
+  <p class="footer-note">Lưu ý: tên nút, tính năng và gói miễn phí của các công cụ AI thay đổi thường xuyên. Giảng viên kiểm tra lại thao tác trước mỗi khóa. Công thức, quy trình và prompt trong giáo trình này dùng được lâu dài.</p>
+  <p class="footer-note">Giảng viên: [Tên bạn] · Liên hệ: [Zalo / Email / Fanpage]</p>
+</section>
+
+</body>
+</html>
