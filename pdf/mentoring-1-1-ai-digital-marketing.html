@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>AI-Driven Digital Marketing – Private Mentoring 1-1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  :root {
+    --bg: #EFEEEA; --card: #FAF9F6; --white: #FFFFFF; --line: #E1DFD9;
+    --ink: #131313; --text: #3A3A3A; --muted: #7A7873;
+    --red: #E0252C; --red-soft: #FBE9E9; --dark: #151515; --dark-2: #232323;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { margin: 0; font-family: "Inter", "DejaVu Sans", sans-serif; color: var(--text); font-size: 9pt; line-height: 1.5; background: var(--bg); font-feature-settings: "cv11", "ss01"; font-optical-sizing: auto; }
+  h1, h2, h3, h4, p { margin: 0; }
+  ul { margin: 0; padding: 0; list-style: none; }
+
+  .page { width: 210mm; height: 297mm; padding: 13mm 15mm 0; position: relative; overflow: hidden; background: var(--bg); page-break-after: always; break-after: page; }
+  .page:last-child { page-break-after: auto; break-after: auto; }
+
+  /* ---------- Page chrome ---------- */
+  .topbar { display: flex; justify-content: space-between; align-items: center; font-size: 6.8pt; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 8mm; }
+  .topbar b { color: var(--ink); font-weight: 700; }
+  .topbar .sq { display: inline-block; width: 6px; height: 6px; background: var(--red); margin-right: 7px; vertical-align: 1px; }
+  .foot { position: absolute; left: 15mm; right: 15mm; bottom: 9mm; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--line); padding-top: 3.5mm; font-size: 7.5pt; color: var(--muted); }
+  .foot b { color: var(--ink); font-weight: 700; }
+
+  /* ---------- Type ---------- */
+  .eyebrow { font-size: 7pt; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--red); margin-bottom: 2.2mm; }
+  .eyebrow.muted { color: var(--muted); }
+  h1 { font-family: "Inter", sans-serif; font-size: 30pt; font-weight: 800; line-height: 1.05; letter-spacing: -.035em; color: var(--ink); }
+  h1 em { font-style: normal; color: var(--red); }
+  h2 { font-family: "Inter", sans-serif; font-size: 18pt; font-weight: 700; line-height: 1.15; letter-spacing: -.025em; color: var(--ink); margin-bottom: 4.5mm; }
+  .lead { font-size: 10pt; line-height: 1.52; color: var(--text); margin-top: 4mm; max-width: 165mm; }
+  .sec { margin-top: 7mm; }
+  .small { font-size: 7.6pt; color: var(--muted); }
+
+  /* ---------- Cards ---------- */
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 9px; padding: 5mm 5.5mm; }
+  .card.white { background: var(--white); }
+  .card.dark { background: var(--dark); border-color: var(--dark); color: #CFCFCF; }
+  .card.dark h3 { color: #fff; }
+  .label { font-size: 6.6pt; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--red); margin-bottom: 2.5mm; }
+  .label.gray { color: var(--muted); }
+
+  /* ---------- Cover ---------- */
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 6mm; background: var(--card); border: 1px solid var(--line); border-radius: 9px; }
+  .stat { padding: 4.5mm 5mm; border-left: 1px solid var(--line); }
+  .stat:first-child { border-left: 0; }
+  .stat .n { font-family: "Inter", sans-serif; font-size: 23pt; font-weight: 800; letter-spacing: -.03em; color: var(--ink); line-height: 1.1; }
+  .stat .n.red { color: var(--red); }
+  .stat .t { font-size: 7.6pt; color: var(--muted); margin-top: 1.5mm; line-height: 1.4; }
+
+  .quotes { display: flex; flex-wrap: wrap; gap: 2mm; margin-bottom: 3.5mm; }
+  .q { background: var(--white); border: 1px solid var(--line); border-radius: 99px; padding: 1.6mm 3.6mm; font-size: 8.4pt; font-weight: 600; color: var(--ink); }
+
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; }
+  .two.w { grid-template-columns: 1.15fr 1fr; }
+  .bul li { position: relative; padding-left: 6.2mm; margin-bottom: 2mm; font-size: 8.6pt; line-height: 1.45; }
+  .bul li:last-child { margin-bottom: 0; }
+  .bul li::before { content: ""; position: absolute; left: 0; top: .5mm; width: 3.8mm; height: 3.8mm; border-radius: 50%; background: var(--red); }
+  .bul li::after { content: ""; position: absolute; left: 1.25mm; top: 1.25mm; width: 1.1mm; height: 1.9mm; border: solid #fff; border-width: 0 1.4px 1.4px 0; transform: rotate(45deg); }
+  .bul.ring li::before { background: transparent; border: 1.3px solid var(--red); }
+  .bul.ring li::after { display: none; }
+  .bul.black li::before { background: var(--ink); }
+  .card.dark h3 { font-family: "Inter", sans-serif; font-size: 15pt; font-weight: 700; letter-spacing: -.02em; line-height: 1.22; margin-bottom: 3mm; }
+  .card.dark p { font-size: 8.6pt; color: #A9A9A9; margin-bottom: 4mm; }
+  .card.dark .bul li { color: #D6D6D6; font-size: 8.3pt; }
+  .hl { color: #fff; }
+
+  /* ---------- Pipeline ---------- */
+  .pipe { display: grid; grid-template-columns: repeat(6, 1fr); gap: 2.2mm; }
+  .node { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 3.5mm 3mm 3.2mm; position: relative; min-height: 27mm; }
+  .node .k { font-family: "Inter", sans-serif; font-size: 16pt; font-weight: 800; color: var(--red); letter-spacing: -.03em; line-height: 1; }
+  .node .nm { font-size: 8.1pt; font-weight: 700; color: var(--ink); margin-top: 2.2mm; line-height: 1.3; }
+  .node .en { font-size: 6.4pt; color: var(--muted); margin-top: 1mm; line-height: 1.3; }
+  .node.last { background: var(--dark); border-color: var(--dark); }
+  .node.last .nm { color: #fff; }
+  .node.last .en { color: #9a9a9a; }
+  .node:not(:last-child)::after { content: "→"; position: absolute; right: -2.3mm; top: 3.2mm; width: 2.4mm; text-align: center; font-size: 8pt; color: var(--red); font-weight: 700; }
+  .phases { display: grid; grid-template-columns: 1fr 2fr 1fr 1fr 1fr; gap: 2.2mm; margin-top: 2.2mm; }
+  .phase { border-top: 2px solid var(--ink); padding-top: 1.6mm; font-size: 6.8pt; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--ink); }
+  .phase.r { border-color: var(--red); color: var(--red); }
+
+  /* ---------- Table ---------- */
+  .tbl { border-radius: 9px; overflow: hidden; border: 1px solid var(--line); background: var(--card); }
+  .tr { display: grid; grid-template-columns: 11mm 1.05fr 7mm 1fr; align-items: center; border-top: 1px solid var(--line); }
+  .tr > div { padding: 3.1mm 3mm; }
+  .tr.head { background: var(--dark); border-top: 0; }
+  .tr.head > div { font-size: 6.5pt; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #fff; padding: 2.8mm 3mm; }
+  .tr.head > div.r { color: #FF5A5F; }
+  .tr .no { font-family: "Inter", sans-serif; font-weight: 800; color: var(--red); font-size: 11pt; }
+  .tr .pb { font-size: 8.2pt; color: var(--text); }
+  .tr .pb b { display: block; color: var(--ink); font-size: 8.6pt; margin-bottom: .6mm; }
+  .tr .ar { color: var(--red); font-weight: 700; font-size: 10pt; padding: 0; text-align: center; }
+  .tr .out { font-size: 8.3pt; font-weight: 700; color: var(--ink); }
+
+  .callout { border-left: 3px solid var(--red); padding: 1mm 0 1mm 4.5mm; margin-top: 6mm; }
+  .callout p { font-size: 10.5pt; font-weight: 700; color: var(--ink); line-height: 1.4; }
+  .callout .small { margin-top: 1.5mm; font-weight: 400; }
+
+  /* ---------- Module card ---------- */
+  .mod { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 5.5mm 6mm 5mm; margin-bottom: 4.5mm; }
+  .mod-head { display: grid; grid-template-columns: 17mm 1fr 33mm; gap: 3mm; align-items: start; }
+  .mod-num { font-family: "Inter", sans-serif; font-size: 30pt; font-weight: 800; color: var(--red); letter-spacing: -.04em; line-height: .95; }
+  .mod-tag { font-size: 6.5pt; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.3mm; }
+  .mod h3 { font-family: "Inter", sans-serif; font-size: 13.2pt; font-weight: 700; color: var(--ink); line-height: 1.25; letter-spacing: -.015em; }
+  .badge { background: var(--white); border: 1px solid var(--line); border-radius: 8px; padding: 2.4mm 3mm; text-align: left; }
+  .badge .v { font-family: "Inter", sans-serif; font-size: 15pt; font-weight: 800; color: var(--ink); letter-spacing: -.03em; line-height: 1.05; }
+  .badge .d { font-size: 6.5pt; color: var(--muted); line-height: 1.35; margin-top: .8mm; }
+  .mod-body { margin-left: 20mm; margin-top: 3mm; }
+  .mod-body .prob { font-size: 8.8pt; line-height: 1.55; color: var(--text); }
+  .lab { background: var(--white); border: 1px solid var(--line); border-radius: 8px; padding: 3.6mm 4.5mm; margin-top: 3.5mm; }
+  .lab .bul li { font-size: 8.5pt; }
+  .outbar { margin-top: 3.5mm; background: var(--dark); border-radius: 8px; padding: 2.8mm 3.5mm; display: grid; grid-template-columns: 19mm 1fr; align-items: center; gap: 2mm; }
+  .outbar .lb { font-size: 6.4pt; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: #FF5A5F; line-height: 1.35; }
+  .outbar .chips { display: flex; align-items: center; gap: 1.6mm; flex-wrap: wrap; }
+  .chip { border: 1px solid #3A3A3A; background: var(--dark-2); color: #fff; border-radius: 99px; padding: 1.2mm 2.8mm; font-size: 7.3pt; font-weight: 600; white-space: nowrap; }
+  .chip.red { background: var(--red); border-color: var(--red); }
+  .plus { color: #777; font-size: 8pt; }
+
+  .page.mods { display: flex; flex-direction: column; padding-bottom: 24mm; }
+  .page.mods .mod { flex: 1; display: flex; flex-direction: column; }
+  .page.mods .mod:last-of-type { margin-bottom: 0; }
+  .page.mods .mod-body { flex: 1; display: flex; flex-direction: column; }
+  .page.mods .outbar { margin-top: auto; }
+  .page.mods .lab { margin-bottom: 4mm; }
+
+  /* ---------- Assets ---------- */
+  .assets { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.6mm; }
+  .asset { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 3.6mm 3.6mm 3.4mm; }
+  .asset .ix { font-size: 6.5pt; font-weight: 700; letter-spacing: .08em; color: var(--red); text-transform: uppercase; }
+  .asset .nm { font-size: 8.5pt; font-weight: 700; color: var(--ink); line-height: 1.3; margin-top: 1.5mm; }
+  .asset .ds { font-size: 7.1pt; color: var(--muted); line-height: 1.38; margin-top: 1.2mm; }
+  .asset.master { grid-column: span 4; background: var(--dark); border-color: var(--dark); display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 5mm; padding: 4.5mm 5mm; }
+  .asset.master .nm { color: #fff; font-size: 11pt; margin-top: 1mm; }
+  .asset.master .ds { color: #A9A9A9; font-size: 7.8pt; }
+  .asset.master .big { font-family: "Inter", sans-serif; font-size: 26pt; font-weight: 800; color: var(--red); letter-spacing: -.03em; }
+
+  /* ---------- Format block ---------- */
+  .fmt { background: var(--dark); border-radius: 10px; padding: 6.5mm 7mm 5.5mm; color: #D6D6D6; }
+  .fmt-top { display: grid; grid-template-columns: 50mm 1fr; gap: 6mm; align-items: center; }
+  .fmt-big { font-family: "Inter", sans-serif; font-size: 52pt; font-weight: 800; color: #fff; letter-spacing: -.05em; line-height: 1; }
+  .fmt-big span { color: var(--red); margin: 0 .06em; }
+  .fmt-row { display: grid; grid-template-columns: 5mm 1fr; gap: 3mm; align-items: center; margin-bottom: 2.6mm; font-size: 8.7pt; }
+  .fmt-row:last-child { margin-bottom: 0; }
+  .fmt-row .dot { width: 5mm; height: 5mm; border-radius: 50%; background: var(--red); color: #fff; font-size: 6.6pt; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+  .fmt-row b { color: #fff; }
+  .fmt-bot { display: grid; grid-template-columns: 1fr 72mm; gap: 6mm; align-items: end; border-top: 1px solid #2E2E2E; margin-top: 5.5mm; padding-top: 4mm; }
+  .fmt-bot .small { color: #8E8E8E; }
+  .fmt-bot .path { color: #fff; font-weight: 700; font-size: 9.2pt; margin-top: 1mm; }
+  .ratio .lbs { display: flex; justify-content: space-between; font-size: 6.6pt; color: #9a9a9a; margin-bottom: 1.4mm; }
+  .ratio .lbs span:last-child { color: #FF5A5F; font-weight: 700; }
+  .ratio .bar { height: 2mm; background: #3a3a3a; border-radius: 99px; overflow: hidden; display: flex; }
+  .ratio .bar i { display: block; height: 100%; }
+  .ratio .bar i.a { width: 20%; background: #D9D9D9; }
+  .ratio .bar i.b { width: 80%; background: var(--red); }
+
+  .three { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3mm; }
+  .three .card { padding: 4mm 4.5mm; }
+  .three .card p { font-size: 8.2pt; line-height: 1.48; }
+  .three .card b { color: var(--ink); }
+</style>
+</head>
+<body>
+
+<!-- ================= PAGE 1 · COVER ================= -->
+<section class="page">
+  <div class="topbar">
+    <div><span class="sq"></span><b>Private Mentoring 1-1</b> · Chương trình huấn luyện &amp; chuyển giao thực chiến</div>
+    <div>AI-Driven Digital Marketing</div>
+  </div>
+
+  <h1>AI-Driven Digital Marketing:<br>từ chiến lược đến <em>hệ thống<br>chuyển đổi</em> doanh nghiệp</h1>
+  <p class="lead">Làm chủ toàn diện dây chuyền Digital Marketing bằng AI đang vận hành thực tế tại doanh nghiệp Việt Nam — và tự tay hoàn thiện một <b>Bộ Dự án Mẫu (End-to-End Live Case Study)</b> từ dữ liệu thô đến sản phẩm cuối, đủ để tự tin triển khai hoặc trình diễn thực tế (Live Demo).</p>
+
+  <div class="stats">
+    <div class="stat"><div class="n">1–1</div><div class="t">Huấn luyện kèm riêng, bảo mật &amp; cá nhân hóa 100% theo tốc độ học viên</div></div>
+    <div class="stat"><div class="n">06</div><div class="t">Học phần chuyển giao trọn một hệ thống, không học công cụ rời rạc</div></div>
+    <div class="stat"><div class="n red">80%</div><div class="t">Thời lượng thực hành trực tiếp trên hệ thống đang vận hành</div></div>
+    <div class="stat"><div class="n">A–Z</div><div class="t">Hồ sơ dự án hoàn chỉnh, sẵn sàng triển khai hoặc Live Demo</div></div>
+  </div>
+
+  <div class="card sec" style="margin-top:5mm">
+    <div class="label">Doanh nghiệp bạn có quen cảnh này?</div>
+    <div class="quotes">
+      <span class="q">“Hỏi AI mà kết quả toàn câu sáo rỗng.”</span>
+      <span class="q">“Nội dung AI viết ra không giống thương hiệu mình.”</span>
+      <span class="q">“Ảnh AI đẹp nhưng không dám chạy quảng cáo.”</span>
+      <span class="q">“Có lượt xem mà không ra đơn.”</span>
+    </div>
+    <p style="font-size:8.8pt">Phần lớn doanh nghiệp đã dùng AI, nhưng dùng rời rạc từng công cụ. Marketing vẫn “đoán mò” trên giấy, nội dung mất chất thương hiệu, ngân sách rơi rớt ở trang đích và khâu tư vấn. Vấn đề không nằm ở công cụ — mà ở việc <b style="color:var(--ink)">thiếu một hệ thống nối liền từ đầu đến cuối</b>.</p>
+  </div>
+
+  <div class="sec">
+    <div class="eyebrow">01 · Mục tiêu</div>
+    <h2>Không học công cụ rời rạc — học cả dây chuyền chạy thật</h2>
+    <div class="two w">
+      <div class="card">
+        <div style="font-size:8.8pt;font-weight:700;color:var(--ink);margin-bottom:3mm">Sau chương trình, bạn có thể tự tay:</div>
+        <ul class="bul">
+          <li>Hiểu khách hàng bằng dữ liệu thật, thay cho phỏng đoán.</li>
+          <li>Vận hành Trợ lý AI viết đúng giọng thương hiệu.</li>
+          <li>Sản xuất hình ảnh, video thương mại từ sản phẩm thật.</li>
+          <li>Nhân bản 15–20 biến thể quảng cáo từ 1 ý tưởng gốc.</li>
+          <li>Dựng trang đích và luồng chăm khách 24/7, không cần code.</li>
+          <li>Đọc số liệu chiến dịch, ra quyết định tối ưu ngân sách.</li>
+        </ul>
+      </div>
+      <div class="card dark">
+        <div class="label">Ý tưởng lớn của chương trình</div>
+        <h3>Nối liền mạch <span style="color:#FF5A5F">Nghiên cứu → Nội dung → Quảng cáo → Chuyển đổi</span> doanh thu.</h3>
+        <p>Mỗi học phần là một mắt xích của cùng một dây chuyền, áp dụng trên cùng một thương hiệu mẫu.</p>
+        <ul class="bul ring">
+          <li>Thực hành trên hệ thống <span class="hl">đang vận hành thật</span>, không phải bài tập trên giấy.</li>
+          <li>Mỗi học phần kết thúc bằng <span class="hl">một sản phẩm đầu ra</span> bạn sở hữu.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot"><div><b>Chiến lược → Hệ thống → Chuyển đổi</b></div><div>01 / 06</div></div>
+</section>
+
+<!-- ================= PAGE 2 · ROADMAP ================= -->
+<section class="page">
+  <div class="topbar">
+    <div><span class="sq"></span><b>Private Mentoring 1-1</b> · Lộ trình chuyển giao</div>
+    <div>AI-Driven Digital Marketing</div>
+  </div>
+
+  <div class="eyebrow">02 · Lộ trình</div>
+  <h2>6 học phần, 1 dây chuyền liền mạch</h2>
+  <p style="font-size:9pt;margin:-2mm 0 5mm;max-width:165mm">Đi đúng trình tự doanh nghiệp hiện đại vận hành: hiểu khách hàng trước, tạo nội dung và quảng cáo sau, rồi chuyển đổi, đo lường và tối ưu. Đầu ra của học phần trước là đầu vào của học phần sau.</p>
+
+  <div class="pipe">
+    <div class="node"><div class="k">01</div><div class="nm">Giải mã khách hàng</div><div class="en">Market &amp; Customer Intelligence</div></div>
+    <div class="node"><div class="k">02</div><div class="nm">Bộ não thương hiệu</div><div class="en">Brand Brain &amp; AI Search</div></div>
+    <div class="node"><div class="k">03</div><div class="nm">Studio hình ảnh &amp; video</div><div class="en">Commercial Visual &amp; Video</div></div>
+    <div class="node"><div class="k">04</div><div class="nm">Nhân bản quảng cáo</div><div class="en">Ad Creative &amp; Paid Media</div></div>
+    <div class="node"><div class="k">05</div><div class="nm">Phễu &amp; chăm khách tự động</div><div class="en">No-Code Funnel &amp; CRM</div></div>
+    <div class="node last"><div class="k">06</div><div class="nm">Phân tích &amp; đóng gói</div><div class="en">Analytics &amp; Master Case</div></div>
+  </div>
+  <div class="phases">
+    <div class="phase">Nghiên cứu</div>
+    <div class="phase">Nội dung</div>
+    <div class="phase">Quảng cáo</div>
+    <div class="phase">Chuyển đổi</div>
+    <div class="phase r">Tối ưu &amp; đóng gói</div>
+  </div>
+
+  <div class="sec">
+    <div class="eyebrow">Bản đồ học phần</div>
+    <h2>Mỗi bài toán doanh nghiệp, một sản phẩm đầu ra</h2>
+    <div class="tbl">
+      <div class="tr head"><div>#</div><div>Bài toán thực tế cần giải</div><div></div><div class="r">Sản phẩm đầu ra bạn sở hữu</div></div>
+      <div class="tr"><div class="no">01</div><div class="pb"><b>Marketing “đoán mò”</b>Hỏi AI chung chung, kết quả sáo rỗng; chưa nối nghiên cứu với doanh thu.</div><div class="ar">→</div><div class="out">Bản đồ Tâm lý khách hàng + Ma trận Góc tiếp cận (Angle Matrix)</div></div>
+      <div class="tr"><div class="no">02</div><div class="pb"><b>“Rác nội dung AI”</b>Văn phong máy móc, mất chất thương hiệu, sai thông số sản phẩm.</div><div class="ar">→</div><div class="out">Trợ lý AI Thương hiệu độc quyền + Kế hoạch nội dung đa kênh</div></div>
+      <div class="tr"><div class="no">03</div><div class="pb"><b>Hình ảnh AI không dùng được</b>Đẹp nhưng sai sản phẩm; thuê studio, diễn viên tốn kém.</div><div class="ar">→</div><div class="out">Bộ ảnh thương mại cao cấp + Video Marketing từ sản phẩm thật</div></div>
+      <div class="tr"><div class="no">04</div><div class="pb"><b>Quảng cáo nhanh bão hòa</b>Creative quyết định 80% hiệu quả chi phí, nhưng ra ý tưởng chậm.</div><div class="ar">→</div><div class="out">Ma trận Biến thể Quảng cáo sẵn sàng chạy chiến dịch</div></div>
+      <div class="tr"><div class="no">05</div><div class="pb"><b>Rớt khách ở trang đích</b>Có tương tác nhưng tư vấn chậm, phân loại khách thủ công.</div><div class="ar">→</div><div class="out">Trang đích tương tác online + Luồng tư vấn &amp; phân loại khách tự động</div></div>
+      <div class="tr"><div class="no">06</div><div class="pb"><b>Số liệu rời rạc, rủi ro AI</b>Báo cáo không ra quyết định; bảo mật, bản quyền chưa chuẩn.</div><div class="ar">→</div><div class="out">Quy trình phân tích báo cáo bằng AI + Hồ sơ Dự án A–Z</div></div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <p>Sáu sản phẩm đầu ra ghép lại thành một Hồ sơ Dự án AI Marketing hoàn chỉnh — từ dữ liệu thô đến chuyển đổi doanh thu.</p>
+    <div class="small">Kiểm tra nhanh: mỗi học phần đều trả lời được câu hỏi “Doanh nghiệp dùng ngay sản phẩm này vào đâu?”</div>
+  </div>
+
+  <div class="foot"><div><b>Chiến lược → Hệ thống → Chuyển đổi</b></div><div>02 / 06</div></div>
+</section>
+
+<!-- ================= PAGE 3 · MODULES 01–02 ================= -->
+<section class="page mods">
+  <div class="topbar">
+    <div><span class="sq"></span><b>Private Mentoring 1-1</b> · Chi tiết học phần</div>
+    <div>AI-Driven Digital Marketing</div>
+  </div>
+
+  <div class="eyebrow">03 · Chi tiết học phần</div>
+  <h2>Từ bài toán thật đến sản phẩm đầu ra</h2>
+
+  <div class="mod">
+    <div class="mod-head">
+      <div class="mod-num">01</div>
+      <div><div class="mod-tag">AI Market &amp; Customer Intelligence</div><h3>Tư duy Hệ thống Digital Marketing Thực chiến &amp; Giải mã Khách hàng</h3></div>
+      <div class="badge"><div class="v">15 phút</div><div class="d">để “mổ xẻ” chiến lược quảng cáo của đối thủ</div></div>
+    </div>
+    <div class="mod-body">
+      <div class="label gray">Bài toán thực tế tại doanh nghiệp</div>
+      <p class="prob">Xóa bỏ cách làm Marketing “đoán mò” trên giấy và thói quen hỏi AI chung chung cho ra kết quả sáo rỗng. Hiểu cách doanh nghiệp hiện đại nối liền mạch từ <b>Nghiên cứu thị trường → Nội dung → Quảng cáo → Chuyển đổi doanh thu</b>.</p>
+      <div class="lab">
+        <div class="label">Trọng tâm thực hành · Hands-on Lab</div>
+        <ul class="bul black">
+          <li>Dùng AI thu thập, đọc hiểu hàng trăm bình luận/đánh giá thật của người mua trên thị trường.</li>
+          <li>“Mổ xẻ” chiến lược quảng cáo của đối thủ trong 15 phút.</li>
+          <li>Thiết lập “Khách hàng giả lập” (Synthetic Persona) từ dữ liệu thật để phản biện và thử nghiệm thông điệp bán hàng <b>trước khi chi ngân sách</b>.</li>
+        </ul>
+      </div>
+      <div class="outbar"><span class="lb">Sản phẩm<br>đầu ra</span><div class="chips"><span class="chip">Bản đồ Tâm lý khách hàng thực tế</span><span class="plus">+</span><span class="chip red">Ma trận Góc tiếp cận (Angle Matrix)</span></div></div>
+    </div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-head">
+      <div class="mod-num">02</div>
+      <div><div class="mod-tag">Brand Brain &amp; AI Search Visibility</div><h3>Kiến tạo “Bộ Não Thương Hiệu” &amp; Chiến lược Nội dung Thế hệ mới</h3></div>
+      <div class="badge"><div class="v">100%</div><div class="d">viết đúng giọng thương hiệu, đúng thông số sản phẩm</div></div>
+    </div>
+    <div class="mod-body">
+      <div class="label gray">Bài toán thực tế tại doanh nghiệp</div>
+      <p class="prob">Giải quyết triệt để căn bệnh “rác nội dung AI” — văn phong máy móc, mất chất thương hiệu, sai thông số sản phẩm — khiến 90% doanh nghiệp dùng AI nhưng không tạo ra chuyển đổi.</p>
+      <div class="lab">
+        <div class="label">Trọng tâm thực hành · Hands-on Lab</div>
+        <ul class="bul black">
+          <li>Đóng gói kho dữ liệu nội bộ, quy chuẩn ngôn từ và định vị thương hiệu thành một “Bộ não AI riêng biệt” viết đúng giọng thương hiệu 100%.</li>
+          <li>Cấu trúc nội dung đa kênh để thương hiệu không chỉ lên top tìm kiếm truyền thống mà còn <b>được chính các công cụ AI gọi tên và đề xuất đầu tiên</b>.</li>
+        </ul>
+      </div>
+      <div class="outbar"><span class="lb">Sản phẩm<br>đầu ra</span><div class="chips"><span class="chip red">Trợ lý AI Thương hiệu độc quyền</span><span class="plus">+</span><span class="chip">Kế hoạch chiến dịch nội dung đa kênh</span></div></div>
+    </div>
+  </div>
+
+  <div class="foot"><div><b>Chiến lược → Hệ thống → Chuyển đổi</b></div><div>03 / 06</div></div>
+</section>
+
+<!-- ================= PAGE 4 · MODULES 03–04 ================= -->
+<section class="page mods">
+  <div class="topbar">
+    <div><span class="sq"></span><b>Private Mentoring 1-1</b> · Chi tiết học phần</div>
+    <div>AI-Driven Digital Marketing</div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-head">
+      <div class="mod-num">03</div>
+      <div><div class="mod-tag">Commercial Visual &amp; Video Production</div><h3>Studio Hình ảnh &amp; Video Thương mại Giữ Chuẩn Sản Phẩm Thật</h3></div>
+      <div class="badge"><div class="v">70–80%</div><div class="d">chi phí thuê studio, diễn viên có thể cắt giảm</div></div>
+    </div>
+    <div class="mod-body">
+      <div class="label gray">Bài toán thực tế tại doanh nghiệp</div>
+      <p class="prob">Tại sao hình ảnh/video AI thông thường trông bắt mắt nhưng không thể dùng chạy thương mại? Quy trình giúp doanh nghiệp cắt giảm 70–80% chi phí thuê studio/diễn viên mà vẫn <b>đảm bảo tính chân thực tuyệt đối</b> của sản phẩm.</p>
+      <div class="lab">
+        <div class="label">Trọng tâm thực hành · Hands-on Lab</div>
+        <ul class="bul black">
+          <li>Xử lý hình ảnh thương mại: đưa sản phẩm thật 100% — giữ nguyên logo, bao bì, chất liệu — vào bối cảnh và người mẫu AI.</li>
+          <li>Xây dựng kịch bản giữ chân 3 giây đầu và khóa đồng nhất nhân vật xuyên suốt video.</li>
+          <li>Sản xuất video Marketing hoàn chỉnh từ sản phẩm thật.</li>
+        </ul>
+      </div>
+      <div class="outbar"><span class="lb">Sản phẩm<br>đầu ra</span><div class="chips"><span class="chip">Bộ ấn phẩm Hình ảnh thương mại cao cấp</span><span class="plus">+</span><span class="chip red">Video Marketing từ sản phẩm thật</span></div></div>
+    </div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-head">
+      <div class="mod-num">04</div>
+      <div><div class="mod-tag">High-Velocity Ad Creative &amp; Paid Media</div><h3>Nhân bản Vũ khí Quảng cáo &amp; Tối ưu Thuật toán Thực chiến</h3></div>
+      <div class="badge"><div class="v">15–20</div><div class="d">biến thể quảng cáo từ 1 ý tưởng gốc, trong 1 buổi</div></div>
+    </div>
+    <div class="mod-body">
+      <div class="label gray">Bài toán thực tế tại doanh nghiệp</div>
+      <p class="prob">Hiểu bản chất vận hành của các nền tảng quảng cáo hiện đại (Meta, TikTok, Google) — nơi <b>Nội dung sáng tạo (Creative) quyết định 80% hiệu quả chi phí</b>, chứ không còn nằm ở các thao tác cài đặt kỹ thuật thủ công.</p>
+      <div class="lab">
+        <div class="label">Trọng tâm thực hành · Hands-on Lab</div>
+        <ul class="bul black">
+          <li>Quy trình phân rã và nhân bản tốc độ cao 15–20 biến thể quảng cáo từ 1 ý tưởng gốc chỉ trong một buổi làm việc.</li>
+          <li>Đa dạng góc đánh tâm lý, tiêu đề và 3 giây mở đầu cho từng biến thể.</li>
+          <li>Thử nghiệm thị trường (A/B Testing) và chống bão hòa quảng cáo.</li>
+        </ul>
+      </div>
+      <div class="outbar"><span class="lb">Sản phẩm<br>đầu ra</span><div class="chips"><span class="chip red">Ma trận Biến thể Quảng cáo chuyển đổi cao</span><span class="chip">Sẵn sàng đưa vào chiến dịch thực tế</span></div></div>
+    </div>
+  </div>
+
+  <div class="foot"><div><b>Chiến lược → Hệ thống → Chuyển đổi</b></div><div>04 / 06</div></div>
+</section>
+
+<!-- ================= PAGE 5 · MODULES 05–06 ================= -->
+<section class="page mods">
+  <div class="topbar">
+    <div><span class="sq"></span><b>Private Mentoring 1-1</b> · Chi tiết học phần</div>
+    <div>AI-Driven Digital Marketing</div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-head">
+      <div class="mod-num">05</div>
+      <div><div class="mod-tag">No-Code Funnel &amp; Automated CRM</div><h3>Xây Phễu Trang Đích Chuyển đổi &amp; Trợ lý Chăm khách Tự động 24/7</h3></div>
+      <div class="badge"><div class="v">30 phút</div><div class="d">dựng trang đích &amp; công cụ thu khách, không cần code</div></div>
+    </div>
+    <div class="mod-body">
+      <div class="label gray">Bài toán thực tế tại doanh nghiệp</div>
+      <p class="prob">Khắc phục điểm đứt gãy làm thất thoát ngân sách lớn nhất: có lượt xem/tương tác nhưng <b>rớt khách tại trang đích</b> và chậm trễ trong khâu tư vấn, phân loại khách hàng.</p>
+      <div class="lab">
+        <div class="label">Trọng tâm thực hành · Hands-on Lab</div>
+        <ul class="bul black">
+          <li>Điều khiển AI bằng ngôn ngữ tự nhiên để tự dựng nhanh Trang đích bán hàng (Landing Page) — hoàn toàn không cần biết lập trình.</li>
+          <li>Tạo công cụ tương tác thu khách: trắc nghiệm chẩn đoán nhu cầu, bảng tính báo giá tự động — trong 30 phút.</li>
+          <li>Lắp ráp luồng Trợ lý AI trực tin nhắn 24/7 dựa trên bảng giá thật, lọc khách tiềm năng cho đội ngũ kinh doanh.</li>
+        </ul>
+      </div>
+      <div class="outbar"><span class="lb">Sản phẩm<br>đầu ra</span><div class="chips"><span class="chip red">Trang đích tương tác hoạt động trực tuyến</span><span class="plus">+</span><span class="chip">Luồng tư vấn &amp; phân loại khách tự động</span></div></div>
+    </div>
+  </div>
+
+  <div class="mod">
+    <div class="mod-head">
+      <div class="mod-num">06</div>
+      <div><div class="mod-tag">AI Analytics, Governance &amp; Master Case Study</div><h3>Đọc vị Số liệu Chiến dịch, Quản trị Rủi ro &amp; Đóng gói Dự án Tổng hợp</h3></div>
+      <div class="badge"><div class="v">A–Z</div><div class="d">làm chủ 100% thao tác trình diễn thực tế</div></div>
+    </div>
+    <div class="mod-body">
+      <div class="label gray">Bài toán thực tế tại doanh nghiệp</div>
+      <p class="prob">Biến báo cáo số liệu quảng cáo/doanh thu rời rạc thành <b>quyết định tối ưu ngân sách chính xác</b>; quy chuẩn bảo mật dữ liệu nội bộ, bản quyền thương mại và chính sách nền tảng khi vận hành AI.</p>
+      <div class="lab">
+        <div class="label">Trọng tâm thực hành · Hands-on Lab</div>
+        <ul class="bul black">
+          <li>Huấn luyện AI làm chuyên gia chẩn đoán điểm nghẽn hiệu suất chiến dịch: CTR, tỷ lệ chuyển đổi, chi phí trên mỗi khách hàng, ROAS.</li>
+          <li>Tổng duyệt và đóng gói liền mạch toàn bộ sản phẩm từ Học phần 01 đến 05 thành Bộ Hồ sơ Dự án (Master Case Study) hoàn chỉnh.</li>
+        </ul>
+      </div>
+      <div class="outbar"><span class="lb">Sản phẩm<br>đầu ra</span><div class="chips"><span class="chip">Quy trình phân tích báo cáo bằng AI</span><span class="plus">+</span><span class="chip red">Hồ sơ Dự án AI Marketing A–Z</span></div></div>
+    </div>
+  </div>
+
+  <div class="foot"><div><b>Chiến lược → Hệ thống → Chuyển đổi</b></div><div>05 / 06</div></div>
+</section>
+
+<!-- ================= PAGE 6 · ASSETS & FORMAT ================= -->
+<section class="page">
+  <div class="topbar">
+    <div><span class="sq"></span><b>Private Mentoring 1-1</b> · Tài sản &amp; hình thức</div>
+    <div>AI-Driven Digital Marketing</div>
+  </div>
+
+  <div class="eyebrow">04 · Tài sản sở hữu</div>
+  <h2>Kết thúc chương trình, bạn mang về</h2>
+  <div class="assets">
+    <div class="asset"><div class="ix">HP 01</div><div class="nm">Bản đồ Tâm lý khách hàng</div><div class="ds">Xây từ bình luận, đánh giá thật của người mua.</div></div>
+    <div class="asset"><div class="ix">HP 01</div><div class="nm">Ma trận Góc tiếp cận</div><div class="ds">Angle Matrix cho thương hiệu mẫu, đã qua phản biện.</div></div>
+    <div class="asset"><div class="ix">HP 02</div><div class="nm">Trợ lý AI Thương hiệu</div><div class="ds">Huấn luyện độc quyền, viết đúng giọng thương hiệu.</div></div>
+    <div class="asset"><div class="ix">HP 02</div><div class="nm">Kế hoạch nội dung đa kênh</div><div class="ds">Tối ưu cho tìm kiếm truyền thống và công cụ AI.</div></div>
+    <div class="asset"><div class="ix">HP 03</div><div class="nm">Ảnh &amp; video thương mại</div><div class="ds">Giữ nguyên logo, bao bì, chất liệu sản phẩm thật.</div></div>
+    <div class="asset"><div class="ix">HP 04</div><div class="nm">Ma trận biến thể quảng cáo</div><div class="ds">15–20 biến thể sẵn sàng A/B Testing.</div></div>
+    <div class="asset"><div class="ix">HP 05</div><div class="nm">Trang đích &amp; luồng CRM</div><div class="ds">Thu khách, tư vấn và phân loại tự động 24/7.</div></div>
+    <div class="asset"><div class="ix">HP 06</div><div class="nm">Quy trình phân tích AI</div><div class="ds">Chẩn đoán CTR, CVR, CPA, ROAS ra quyết định.</div></div>
+    <div class="asset master">
+      <div><div class="ix">Tổng hợp · End-to-End Live Case Study</div><div class="nm">Hồ sơ Dự án AI Marketing thực chiến (Master Case Study)</div><div class="ds">Toàn bộ sản phẩm từ Học phần 01 đến 06, đóng gói liền mạch để tự triển khai hoặc trình diễn Live Demo.</div></div>
+      <div class="big">A–Z</div>
+    </div>
+  </div>
+
+  <div class="sec" style="margin-top:7mm">
+    <div class="eyebrow">05 · Hình thức huấn luyện</div>
+    <h2>Kèm riêng 1-1, học theo nhịp của bạn</h2>
+    <div class="fmt">
+      <div class="fmt-top">
+        <div class="fmt-big">1<span>–</span>1</div>
+        <div>
+          <div class="fmt-row"><span class="dot">1</span><div><b>Huấn luyện 1 kèm 1 chuyên sâu</b> — bảo mật dữ liệu doanh nghiệp tuyệt đối.</div></div>
+          <div class="fmt-row"><span class="dot">2</span><div><b>Cá nhân hóa 100%</b> theo tốc độ và bài toán của từng học viên.</div></div>
+          <div class="fmt-row"><span class="dot">3</span><div><b>06 học phần</b>, thực hành trực tiếp trên hệ thống sống.</div></div>
+        </div>
+      </div>
+      <div class="fmt-bot">
+        <div><div class="small">Mỗi học phần đi theo cùng một nhịp:</div><div class="path">Bài toán doanh nghiệp → Hands-on Lab → Sản phẩm đầu ra</div></div>
+        <div class="ratio"><div class="lbs"><span>Tư duy &amp; phương pháp · 20%</span><span>Thực hành · 80%</span></div><div class="bar"><i class="a"></i><i class="b"></i></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:5mm;font-size:9.5pt;font-weight:700;color:var(--ink);margin-bottom:3mm">Sau chương trình, hệ thống tiếp tục làm việc cho bạn</div>
+  <div class="three">
+    <div class="card"><div class="label">Tự triển khai</div><p>Áp dụng ngay dây chuyền <b>Nghiên cứu → Nội dung → Quảng cáo → Chuyển đổi</b> vào doanh nghiệp của mình.</p></div>
+    <div class="card"><div class="label">Tự tin trình diễn</div><p>Làm chủ 100% thao tác để <b>Live Demo</b> trọn bộ hồ sơ dự án trước sếp, đối tác hoặc khách hàng.</p></div>
+    <div class="card"><div class="label">Vận hành an toàn</div><p>Nắm quy chuẩn <b>bảo mật dữ liệu, bản quyền thương mại</b> và chính sách nền tảng khi dùng AI.</p></div>
+  </div>
+
+  <div class="foot"><div><b>Hiểu khách hàng → xây hệ thống AI → biến tương tác thành doanh thu.</b></div><div>06 / 06</div></div>
+</section>
+
+</body>
+</html>
