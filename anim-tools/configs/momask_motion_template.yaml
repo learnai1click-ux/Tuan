@@ -1,0 +1,13 @@
+# Cấu hình chuyển động cho file BVH do MoMask xuất ra (đơn vị mét, trục Y hướng lên, 60 fps).
+# Đổi filepath thành file .bvh của bạn (đường dẫn tính từ repos/AnimatedDrawings).
+filepath: ../momask-codes/visualization/data/template.bvh
+start_frame_idx: 0
+end_frame_idx: 240
+groundplane_joint: LeftFoot
+forward_perp_joint_vectors:
+  - - LeftShoulder
+    - RightShoulder
+  - - LeftUpLeg
+    - RightUpLeg
+scale: 1.0
+up: +y

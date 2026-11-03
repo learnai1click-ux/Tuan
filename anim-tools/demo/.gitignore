@@ -1,0 +1,12 @@
+node_modules
+dist
+.DS_Store
+.env
+
+# Ignore the output video from Git but not videos you import into src/.
+out
+
+# Tạo lại bằng anim-tools/make_demo.sh
+public/clips/
+public/audio/
+out/

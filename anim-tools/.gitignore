@@ -1,0 +1,7 @@
+# Mã nguồn tải về, môi trường Python và kết quả render: tạo lại bằng setup.sh
+repos/
+envs/
+test-output/
+characters/
+voices/
+demo-audio/
