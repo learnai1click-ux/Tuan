@@ -55,7 +55,7 @@ mkdir -p "$PUB/audio/sfx"
 "$ENVS/voice/bin/python" scripts/make_sfx.py "$PUB/audio/sfx" >/dev/null
 K="$SOUNDCN_DIR/assets"  # bộ Kenney, giấy phép CC0
 while read -r src name; do
-  ffmpeg -loglevel error -y -i "$K/$src" -ar 44100 -ac 2 "$PUB/audio/sfx/$name.wav"
+  ffmpeg -nostdin -loglevel error -y -i "$K/$src" -ar 44100 -ac 2 "$PUB/audio/sfx/$name.wav"
 done <<'EOF'
 kenney_interface-sounds/glass_002.ogg notify
 kenney_interface-sounds/switch_003.ogg power_off

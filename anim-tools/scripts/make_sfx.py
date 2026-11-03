@@ -96,4 +96,66 @@ write("buzz", buzz())
 write("whisper", whisper())
 write("flash", flash())
 write("typing", typing())
+
+
+def alarm(dur=1.6):
+    n = int(SR * dur)
+    t = np.arange(n) / SR
+    gate = ((t % 0.25) < 0.16).astype(float)
+    tone = np.sign(np.sin(2 * np.pi * 2100 * t)) * 0.5 + np.sin(2 * np.pi * 4200 * t) * 0.3
+    return lp(tone * gate, 6000) * 0.8
+
+
+def rustle(dur=0.9):
+    n = int(SR * dur)
+    t = np.linspace(0, 1, n)
+    nz = rng.normal(0, 1, n)
+    am = lp(np.abs(rng.normal(0, 1, n)), 12) * 4
+    return (lp(nz, 3000) - lp(nz, 500)) * am * np.sin(np.pi * t)
+
+
+def page(dur=0.35):
+    n = int(SR * dur)
+    t = np.linspace(0, 1, n)
+    nz = rng.normal(0, 1, n)
+    return (nz - lp(nz, 1500 + 3000 * t)) * np.sin(np.pi * t) ** 0.6 * np.exp(-t * 2)
+
+
+def rain(dur=3.0):
+    n = int(SR * dur)
+    nz = rng.normal(0, 1, n)
+    drops = (rng.uniform(0, 1, n) > 0.9993) * rng.uniform(0.5, 1, n)
+    d = np.convolve(drops, np.exp(-np.arange(200) / 30), "same")
+    return (lp(nz, 5000) - lp(nz, 800)) * 0.35 + (d - lp(d, 2000)) * 2
+
+
+def thunder(dur=3.0):
+    n = int(SR * dur)
+    t = np.arange(n) / SR
+    nz = rng.normal(0, 1, n)
+    crack = (nz - lp(nz, 3000)) * np.exp(-t * 18)
+    rumble = lp(nz, 120) * 8 * np.exp(-t * 1.2) * (1 + 0.5 * np.sin(2 * np.pi * 3 * t))
+    return crack * 0.6 + rumble
+
+
+def growl(dur=1.4):
+    n = int(SR * dur)
+    t = np.arange(n) / SR
+    f = 55 + 12 * np.sin(2 * np.pi * 6 * t)
+    buzz = np.tanh(3 * np.sin(2 * np.pi * np.cumsum(f) / SR)) * (1 + 0.5 * rng.normal(0, 1, n))
+    return lp(buzz, 900) * np.minimum(1, t / 0.1) * np.minimum(1, (dur - t) / 0.4)
+
+
+def swish(dur=0.25):
+    return whoosh(dur)
+
+
+write("alarm", alarm())
+write("rustle", rustle())
+write("page", page())
+write("rain", rain())
+write("thunder", thunder())
+write("growl", growl())
+write("swish", swish(), stereo_pan=0.9)
+
 print("ok", sorted(p.name for p in out.glob("*.wav")))

@@ -113,6 +113,33 @@ def face(d, mood):
             d.ellipse([s((ex - 3 + 3, ey - 8)), s((ex + 3 + 3, ey - 2))], fill=(255, 255, 255, 255))
             d.line([s((ex - 18, ey - 30 - 6 * sgn)), s((ex + 18, ey - 30 + 6 * sgn))], fill=INK, width=6 * SS)
         d.arc([s((cx - 18, cy + 30)), s((cx + 18, cy + 52))], 15, 165, fill=INK, width=5 * SS)
+    elif mood == "grit":  # nghiến răng, mồ hôi
+        for ex, sgn in ((cx - 32, 1), (cx + 32, -1)):
+            d.ellipse([s((ex - 10, ey - 8)), s((ex + 10, ey + 10))], fill=INK)
+            d.line([s((ex - 20, ey - 26 - 9 * sgn)), s((ex + 18, ey - 20 + 9 * sgn))], fill=INK, width=7 * SS)
+        d.rounded_rectangle([s((cx - 26, cy + 30)), s((cx + 26, cy + 52))], radius=6 * SS, fill=(250, 250, 250, 255), outline=INK, width=4 * SS)
+        d.line([s((cx - 26, cy + 41)), s((cx + 26, cy + 41))], fill=INK, width=3 * SS)
+        for tx in (cx - 9, cx + 9):
+            d.line([s((tx, cy + 30)), s((tx, cy + 52))], fill=INK, width=3 * SS)
+        d.polygon([s((cx + 78, cy - 40)), s((cx + 70, cy - 18)), s((cx + 86, cy - 18))], fill=(120, 190, 255, 255))
+        d.ellipse([s((cx + 69, cy - 26)), s((cx + 87, cy - 8))], fill=(120, 190, 255, 255))
+    elif mood == "shout":  # hét quyết tâm
+        for ex, sgn in ((cx - 32, 1), (cx + 32, -1)):
+            d.ellipse([s((ex - 11, ey - 12)), s((ex + 11, ey + 8))], fill=INK)
+            d.line([s((ex - 20, ey - 30 - 10 * sgn)), s((ex + 18, ey - 22 + 10 * sgn))], fill=INK, width=7 * SS)
+        d.ellipse([s((cx - 24, cy + 22)), s((cx + 24, cy + 70))], fill=INK)
+        d.ellipse([s((cx - 14, cy + 50)), s((cx + 14, cy + 68))], fill=(220, 90, 100, 255))
+    elif mood == "sad":  # khóc
+        for ex, sgn in ((cx - 32, 1), (cx + 32, -1)):
+            d.ellipse([s((ex - 10, ey - 6)), s((ex + 10, ey + 12))], fill=INK)
+            d.line([s((ex - 16, ey - 22 + 7 * sgn)), s((ex + 16, ey - 22 - 7 * sgn))], fill=INK, width=5 * SS)
+            d.polygon([s((ex - 4, ey + 16)), s((ex + 4, ey + 16)), s((ex + 6, ey + 40)), s((ex - 6, ey + 40))], fill=(120, 190, 255, 255))
+        d.arc([s((cx - 18, cy + 40)), s((cx + 18, cy + 60))], 200, 340, fill=INK, width=5 * SS)
+    elif mood == "shock":
+        for ex in (cx - 32, cx + 32):
+            d.ellipse([s((ex - 15, ey - 16)), s((ex + 15, ey + 16))], fill=(255, 255, 255, 255), outline=INK, width=4 * SS)
+            d.ellipse([s((ex - 6, ey - 6)), s((ex + 6, ey + 6))], fill=INK)
+        d.ellipse([s((cx - 12, cy + 36)), s((cx + 12, cy + 64))], fill=INK)
     else:  # happy
         for ex in (cx - 32, cx + 32):
             d.arc([s((ex - 15, ey - 12)), s((ex + 15, ey + 10))], 200, 340, fill=INK, width=6 * SS)
@@ -144,7 +171,9 @@ def main(out):
     out = Path(out)
     skeleton = [{"loc": list(J[k]), "name": k, "parent": PARENT[k]} for k in J]
     for name, mood, sc in [("sang_tired", "tired", False), ("sang_focus", "focus", True),
-                           ("sang_happy", "happy", True)]:
+                           ("sang_happy", "happy", True), ("sang_grit", "grit", True),
+                           ("sang_shout", "shout", True), ("sang_sad", "sad", False),
+                           ("sang_shock", "shock", False)]:
         d = out / name
         d.mkdir(parents=True, exist_ok=True)
         img, mask = draw(mood, sc)

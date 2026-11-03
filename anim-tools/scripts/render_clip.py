@@ -27,6 +27,7 @@ ap.add_argument("--retarget", required=True)
 ap.add_argument("--out", required=True)
 ap.add_argument("--fps", type=float, default=30)
 ap.add_argument("--start", type=float, default=0.0, help="giây bắt đầu trong BVH")
+ap.add_argument("--speed", type=float, default=1.0, help="tốc độ phát chuyển động (2 = nhanh gấp đôi)")
 ap.add_argument("--seconds", type=float, default=None, help="độ dài clip (mặc định: hết BVH)")
 ap.add_argument("--size", type=int, nargs=2, default=[720, 720])
 ap.add_argument("--camera", type=float, nargs=3, default=[0.0, 0.3, 1.8])
@@ -50,8 +51,12 @@ for old in out.glob("*.png"):
 class PNGWriter(vrc.VideoWriter):
     def __init__(self, controller):
         self.n = 0
+        self.skip = True  # khung đầu là tư thế gốc (pose chỉ áp sau lần tick đầu)
 
     def process_frame(self, frame):  # BGRA, đã lật đúng chiều
+        if self.skip:
+            self.skip = False
+            return
         rgba = frame[:, :, [2, 1, 0, 3]]
         Image.fromarray(rgba, "RGBA").save(out / f"{self.n:04d}.png", optimize=False)
         self.n += 1
@@ -86,11 +91,11 @@ total = bvh.frame_max_num * bvh.frame_time
 if args.start:
     scene.progress_time(args.start)
 dur = args.seconds if args.seconds else total - args.start
-ctrl.delta_t = 1.0 / args.fps
-ctrl.frames_left_to_render = int(math.floor(dur * args.fps))
+ctrl.delta_t = args.speed / args.fps
+ctrl.frames_left_to_render = int(math.floor(dur / args.speed * args.fps)) + 1
 ctrl.progress_bar.total = ctrl.frames_left_to_render
 ctrl.run()
-meta = {"fps": args.fps, "frames": ctrl.frames_rendered, "size": args.size,
+meta = {"fps": args.fps, "frames": ctrl.frames_rendered - 1, "size": args.size,
         "motion": args.motion, "bvh_seconds": total}
 (out / "meta.json").write_text(json.dumps(meta, indent=1))
 print(json.dumps(meta))

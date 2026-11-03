@@ -62,6 +62,30 @@ Từng câu được kiểm tra bằng mô hình nhận dạng giọng nói ti�
 (`sherpa-onnx-zipformer-vi-int8-2025-04-20`). Câu nào nghe sai thì viết lại cho đến khi nhận dạng
 khớp từng chữ.
 
+## Video tiếng Anh Mỹ "Motivation" (60 giây)
+
+```bash
+bash anim-tools/make_demo_en.sh   # → anim-tools/demo/out/motivation.mp4
+```
+
+So với bản tiếng Việt:
+
+| | Bản tiếng Việt | Bản tiếng Anh |
+|---|---|---|
+| Giọng | Piper `vi_VN-vais1000-medium` qua VoiceStudio | Kokoro v1.0 `am_michael` (nam Mỹ), hạ tông 1 nửa cung, nén + EQ + vang ngắn kiểu lồng tiếng truyền động lực |
+| Chuyển động | 6 BVH mẫu của AnimatedDrawings | + 8 chuyển động CMU: chạy, đứng dậy từ sàn, đi ủ rũ, nâng tạ, nhảy, siêu anh hùng, ăn mừng |
+| Biểu cảm | 3 texture | 7 texture (thêm nghiến răng, hét, khóc, sốc) + con rối `Sam` có 11 tham số mặt nội suy theo keyframe |
+| Nhịp | cắt 2,5 giây | cắt 1-2,4 giây, clip phát nhanh 1,2-2x, whip pan, vệt tốc độ, rung máy, chớp sáng |
+| Nhạc | piano + trống | trailer: piano, dây, tim đập, braam, trống tom, hợp xướng |
+
+- `configs/cmu_retarget.yaml`: retarget bộ xương CMU, chiếu tay chân theo PCA để thấy chân vung khi chạy.
+- `scripts/prep_cmu.py`: chép BVH CMU, tuỳ chọn `:inplace` khoá dịch chuyển ngang để chạy tại chỗ.
+- `scripts/make_voiceover_en.py`: lời dẫn Kokoro + chuỗi xử lý ffmpeg (`--voice am_onyx` cho giọng trầm hơn).
+- `demo/src/en/`: `Sam.tsx` (con rối biểu cảm), `fx.tsx` (máy quay, vệt tốc độ, emote, whip, phụ đề bật chữ), `Scenes*.tsx`.
+
+`render_clip.py` bỏ khung đầu tiên vì AnimatedDrawings chỉ áp tư thế sau lần tick đầu; trước đây mỗi clip
+có một khung tư thế chữ A. Thêm `--speed` để phát chuyển động nhanh hơn.
+
 ## Dùng từng công cụ
 
 ### Render nhân vật với chuyển động (chạy được trên CPU)
