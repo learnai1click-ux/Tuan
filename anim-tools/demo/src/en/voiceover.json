@@ -1,0 +1,135 @@
+[
+ {
+  "id": "e01",
+  "at": 0.6,
+  "text": "Every morning, you make the same promise.",
+  "file": "e01.wav",
+  "duration": 2.722
+ },
+ {
+  "id": "e02",
+  "at": 3.9,
+  "text": "Tomorrow. I'll start tomorrow.",
+  "file": "e02.wav",
+  "duration": 2.485
+ },
+ {
+  "id": "e03",
+  "at": 7.3,
+  "text": "And every night, something louder wins.",
+  "file": "e03.wav",
+  "duration": 2.666
+ },
+ {
+  "id": "e04",
+  "at": 11.1,
+  "text": "A year goes by. And nothing changes.",
+  "file": "e04.wav",
+  "duration": 3.008
+ },
+ {
+  "id": "e05",
+  "at": 15.3,
+  "text": "Here's the truth nobody tells you.",
+  "file": "e05.wav",
+  "duration": 2.366
+ },
+ {
+  "id": "e06",
+  "at": 18.2,
+  "text": "Motivation won't save you.",
+  "file": "e06.wav",
+  "duration": 1.989
+ },
+ {
+  "id": "e07",
+  "at": 20.5,
+  "text": "Decisions will.",
+  "file": "e07.wav",
+  "duration": 1.447
+ },
+ {
+  "id": "e08",
+  "at": 22.3,
+  "text": "So today...",
+  "file": "e08.wav",
+  "duration": 1.198
+ },
+ {
+  "id": "e09",
+  "at": 24.4,
+  "text": "you get up.",
+  "file": "e09.wav",
+  "duration": 1.054
+ },
+ {
+  "id": "e10",
+  "at": 27.4,
+  "text": "Not because it's easy.",
+  "file": "e10.wav",
+  "duration": 1.82
+ },
+ {
+  "id": "e11",
+  "at": 29.5,
+  "text": "Because you're done waiting.",
+  "file": "e11.wav",
+  "duration": 1.683
+ },
+ {
+  "id": "e12",
+  "at": 32.6,
+  "text": "One rep. One page. One mile.",
+  "file": "e12.wav",
+  "duration": 3.238
+ },
+ {
+  "id": "e13",
+  "at": 36.6,
+  "text": "When it hurts, you keep going.",
+  "file": "e13.wav",
+  "duration": 1.913
+ },
+ {
+  "id": "e14",
+  "at": 39.8,
+  "text": "When nobody's watching,",
+  "file": "e14.wav",
+  "duration": 1.778
+ },
+ {
+  "id": "e15",
+  "at": 42.0,
+  "text": "you keep going.",
+  "file": "e15.wav",
+  "duration": 1.307
+ },
+ {
+  "id": "e16",
+  "at": 47.2,
+  "text": "And one day, the voice that held you back,",
+  "file": "e16.wav",
+  "duration": 2.638
+ },
+ {
+  "id": "e17",
+  "at": 50.2,
+  "text": "can't even reach you.",
+  "file": "e17.wav",
+  "duration": 1.59
+ },
+ {
+  "id": "e18",
+  "at": 53.3,
+  "text": "You don't need a new year. You need a new day.",
+  "file": "e18.wav",
+  "duration": 2.952
+ },
+ {
+  "id": "e19",
+  "at": 57.3,
+  "text": "Start now.",
+  "file": "e19.wav",
+  "duration": 1.193
+ }
+]
